@@ -9,7 +9,8 @@ self.addEventListener('install', (event) => {
   event.waitUntil(
     caches
       .open(shell)
-      .then((cache) => cache.addAll(files.map((path) => new Request(absolute(path), { cache: 'reload' })))),
+      .then((cache) => cache.addAll(files.map((path) => new Request(absolute(path), { cache: 'reload' }))))
+      .then(() => self.skipWaiting()),
   );
 });
 self.addEventListener('activate', (event) => {
