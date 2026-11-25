@@ -242,15 +242,7 @@ function workoutView() {
     (lifts.length === 1 ? '' : 's') +
     '</span></div></div></section>';
   const plan =
-    '<section class="plan"><div class="section-head"><h2>Workout plan</h2>' +
-    button(
-      'export',
-      'Share to TITAN',
-      'share',
-      'subtle share-top',
-      'aria-label="Export / Share to TITAN"',
-    ) +
-    '</div>' +
+    '<section class="plan"><div class="section-head"><h2>Workout plan</h2></div>' +
     (!program
       ? '<div class="panel rest-state"><h3>' +
         (lifts.length ? 'Saved on this device' : 'No lifting programmed') +
@@ -519,11 +511,10 @@ function checkinView() {
   return (
     '<section class="panel checkin">' +
     title('Session check-in', 'note') +
-    '<label class="abs-check"><input type="checkbox" data-check="absDone" ' +
-    (s.check.absDone ? 'checked' : '') +
-    '><span>Abs complete</span></label>' +
     (a
-      ? '<details class="guidance"><summary>Abs block · ' +
+      ? '<label class="abs-check"><input type="checkbox" data-check="absDone" ' +
+        (s.check.absDone ? 'checked' : '') +
+        '><span>Abs complete</span></label><details class="guidance"><summary>Abs block · ' +
         (a.rounds == null ? 'Open rounds' : a.rounds + ' rounds') +
         icon('down') +
         '</summary><ul>' +
@@ -570,8 +561,8 @@ function checkinView() {
       .join('') +
     '<datalist id="areas">' +
     ['Knee', 'Neck', 'Back', 'Shoulders'].map((a) => '<option>' + a + '</option>').join('') +
-    '</datalist><div class="check-share">' +
-    button('export', 'Export / Share to TITAN', 'share', 'primary') +
+    '</datalist><div class="check-share" hidden>' +
+    button('export', 'Share to TITAN', 'share', 'primary') +
     '</div></section>'
   );
 }
@@ -597,6 +588,7 @@ function updateProgress() {
       );
   }
   if (!$('#completed')) return;
+  $('.check-share').hidden = done === 0;
   $('#completed').textContent = done;
   const planned = unspecified ? '—' : total;
   $('#planned').textContent = planned;
@@ -637,7 +629,7 @@ function historyView() {
       .join('') +
     '</select></label>';
   return (
-    heading('Lift history', button('export-history', 'Export / Share to TITAN', 'share', 'primary')) +
+    heading('Lift history', rows.length ? button('export-history', 'Export history', 'share', 'primary') : '') +
     (!rows.length
       ? '<section class="panel empty"><h2>No logged lifts yet</h2><p>Your first logged set will appear here.</p>' +
         button('open-today', 'Open today’s workout', 'today', 'primary') + '</section>'

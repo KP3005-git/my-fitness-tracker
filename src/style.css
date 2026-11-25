@@ -1316,9 +1316,6 @@ body:has(#timer:not([hidden])) {
   body:has(#timer:not([hidden])) {
     padding-bottom: calc(155px + env(safe-area-inset-bottom));
   }
-  .section-head .subtle {
-    font-size: 0.82rem;
-  }
   .check-share .primary {
     width: 100%;
   }
