@@ -639,7 +639,8 @@ function historyView() {
   return (
     heading('Lift history', button('export-history', 'Export / Share to TITAN', 'share', 'primary')) +
     (!rows.length
-      ? '<section class="panel empty"><h2>No logged lifts yet</h2><p>Your first logged set will appear here.</p></section>'
+      ? '<section class="panel empty"><h2>No logged lifts yet</h2><p>Your first logged set will appear here.</p>' +
+        button('open-today', 'Open today’s workout', 'today', 'primary') + '</section>'
       : select +
         '<div class="charts">' +
         [
@@ -824,7 +825,10 @@ function targetsView() {
       })
       .join('') +
     '</div>' +
-    (!targets.length ? '<p class="panel">No targets posted yet.</p>' : '')
+    (!targets.length
+      ? '<section class="panel empty"><h2>No targets posted yet</h2>' +
+        button('open-sample', 'Try the sample workout', 'today', 'primary') + '</section>'
+      : '')
   );
 }
 function creditsView() {
@@ -1152,9 +1156,10 @@ document.addEventListener('click', async (e) => {
       case 'close':
         $('#dialog').close();
         break;
+      case 'open-today':
       case 'open-sample':
         location.hash = 'today';
-        changeDay(sampleDate);
+        changeDay(act === 'open-sample' ? sampleDate : today());
         window.scrollTo(0, 0);
         break;
       case 'dates':
