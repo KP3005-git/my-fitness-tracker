@@ -26,7 +26,8 @@ self.addEventListener('fetch', (event) => {
   const req = event.request;
   if (req.method !== 'GET' || !req.url.startsWith(scope)) return;
   const relative = new URL(req.url).pathname.slice(new URL(scope).pathname.length);
-  if (relative.startsWith('data/')) return; // The app validates JSON before caching it.
+  // Committed weekly templates are available offline on days with no cached dated workout.
+  if (relative.startsWith('data/') && !relative.startsWith('data/weekly/')) return;
   const appPage =
     req.mode === 'navigate' && (relative.endsWith('.html') || !relative.split('/').at(-1).includes('.'));
   if (appPage || files.includes(relative)) {

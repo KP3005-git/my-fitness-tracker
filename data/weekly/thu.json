@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "date": "2000-01-06",
+  "id": "weekly-thu",
+  "title": "Shoulders",
+  "split": "shoulders",
+  "blocks": [
+    {
+      "id": "seated-barbell-shoulder-press",
+      "exerciseId": "seated-barbell-shoulder-press",
+      "name": "Seated barbell shoulder press",
+      "type": "exercise",
+      "weightLb": 115,
+      "sets": 3,
+      "rir": "1–2",
+      "repMin": 8,
+      "repMax": 10
+    },
+    {
+      "id": "iso-lateral-shoulder-press",
+      "exerciseId": "iso-lateral-shoulder-press",
+      "name": "Iso-lateral shoulder press",
+      "type": "exercise",
+      "weightLb": 55,
+      "sets": 3,
+      "rir": "1–2",
+      "repMin": 10,
+      "repMax": 12,
+      "weightNote": "55 lb per side."
+    },
+    {
+      "id": "dumbbell-lateral-raise",
+      "exerciseId": "dumbbell-lateral-raise",
+      "name": "DB lateral raise",
+      "type": "exercise",
+      "weightLb": 22.5,
+      "sets": 4,
+      "rir": "1–2",
+      "repMin": 10,
+      "repMax": 12,
+      "weightNote": "22.5 lb per dumbbell."
+    }
+  ],
+  "abs": {
+    "items": []
+  },
+  "estimatedMinutes": 45,
+  "coachNote": "Train at RIR 1–2. Optional abs finisher.",
+  "progressionRule": "Stay at the same weight until all prescribed sets reach the top of the rep range. Then add weight."
+}

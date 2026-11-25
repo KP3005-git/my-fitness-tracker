@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "date": "2000-01-07",
+  "id": "weekly-fri",
+  "title": "Arms",
+  "split": "arms",
+  "blocks": [
+    {
+      "id": "machine-curl",
+      "exerciseId": "machine-curl",
+      "name": "Machine curl",
+      "type": "exercise",
+      "weightLb": 120,
+      "sets": 3,
+      "rir": "1–2",
+      "repMin": 8,
+      "repMax": 10
+    },
+    {
+      "id": "standing-ez-bar-curl",
+      "exerciseId": "standing-ez-bar-curl",
+      "name": "Standing EZ-bar curl",
+      "type": "exercise",
+      "weightLb": 60,
+      "sets": 3,
+      "rir": "1–2",
+      "repMin": 12,
+      "repMax": 15
+    },
+    {
+      "id": "seated-concentration-curl",
+      "exerciseId": "seated-concentration-curl",
+      "name": "Seated concentration curl",
+      "type": "exercise",
+      "weightLb": 35,
+      "sets": 3,
+      "rir": "1–2",
+      "repMin": 8,
+      "repMax": 10,
+      "laterality": "unilateral",
+      "weightNote": "35 lb per arm."
+    },
+    {
+      "id": "triceps-work",
+      "exerciseId": "triceps-work",
+      "name": "Triceps work",
+      "type": "exercise",
+      "weightLb": null
+    }
+  ],
+  "abs": {
+    "items": []
+  },
+  "estimatedMinutes": 45,
+  "coachNote": "Train at RIR 1–2. Optional abs finisher.",
+  "progressionRule": "Stay at the same weight until all prescribed sets reach the top of the rep range. Then add weight."
+}

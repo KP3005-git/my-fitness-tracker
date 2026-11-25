@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 1,
+  "date": "2000-01-04",
+  "id": "weekly-tue",
+  "title": "Back",
+  "split": "back",
+  "blocks": [
+    {
+      "id": "deadlift",
+      "exerciseId": "deadlift",
+      "name": "Barbell deadlift",
+      "type": "exercise",
+      "weightLb": 245,
+      "sets": 3,
+      "rir": "1–2",
+      "repMin": 6,
+      "repMax": 8,
+      "goal": "Add 10 lb after 3 sets of 8."
+    },
+    {
+      "id": "lat-pull-down",
+      "exerciseId": "lat-pull-down",
+      "name": "Lat pulldown",
+      "type": "exercise",
+      "weightLb": 130,
+      "sets": 3,
+      "rir": "1–2",
+      "repMin": 8,
+      "repMax": 12,
+      "lastSession": "Used 145 lb on Nov 24."
+    },
+    {
+      "id": "single-arm-hammer-strength-row",
+      "exerciseId": "single-arm-hammer-strength-row",
+      "name": "Single-arm Hammer Strength row",
+      "type": "exercise",
+      "weightLb": 55,
+      "sets": 3,
+      "rir": "1–2",
+      "repMin": 10,
+      "repMax": 12,
+      "laterality": "unilateral",
+      "weightNote": "55 lb per arm.",
+      "sideNote": "10–12 reps per arm."
+    },
+    {
+      "id": "seated-cable-row",
+      "exerciseId": "seated-cable-row",
+      "name": "Seated cable row",
+      "type": "exercise",
+      "weightLb": null
+    },
+    {
+      "id": "straight-arm-lat-pull-down",
+      "exerciseId": "straight-arm-lat-pull-down",
+      "name": "Straight-arm pulldown",
+      "type": "exercise",
+      "weightLb": null
+    },
+    {
+      "id": "face-pull",
+      "exerciseId": "face-pull",
+      "name": "Face pull",
+      "type": "exercise",
+      "weightLb": null
+    }
+  ],
+  "abs": {
+    "items": []
+  },
+  "estimatedMinutes": 45,
+  "coachNote": "Train at RIR 1–2. Optional abs finisher.",
+  "progressionRule": "Stay at the same weight until all prescribed sets reach the top of the rep range. Then add weight."
+}
