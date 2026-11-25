@@ -39,6 +39,7 @@ const button = (action, label, ico, classes = '', extra = '') =>
   label +
   '</button>';
 const title = (label, ico) => '<h2 class="panel-title">' + icon(ico) + esc(label) + '</h2>';
+const sampleDate = '2000-01-01';
 const shortDate = (d) => showDate(d, { month: 'short', day: 'numeric' });
 let date = today(),
   followToday = true,
@@ -82,9 +83,13 @@ function recompute() {
   history = mergeHistory(feed.log?.entries || [], locals);
 }
 function displayBanners() {
-  $('#banners').innerHTML = [...new Set([deviceNotice, ...notices, feed.meta?.message].filter(Boolean))]
+  const messages = [...new Set([deviceNotice, ...notices].filter(Boolean))]
     .map((s) => '<p>' + esc(s) + '</p>')
     .join('');
+  const sample = route() === 'today' && date !== sampleDate && feed.meta?.message
+    ? button('open-sample', esc(feed.meta.message), 'today', 'secondary sample-banner')
+    : '';
+  $('#banners').innerHTML = messages + sample;
 }
 function tell(s) {
   if ($('#dialog').open && $('#dialog-status')) {
@@ -225,9 +230,8 @@ function workoutView() {
     dateButton() +
     '<h1>' +
     esc(heading) +
-    '</h1><div class="hero-meta"><span>' +
-    icon('pin') +
-    'Gym</span>' +
+    '</h1><div class="hero-meta">' +
+    (program?.location ? '<span>' + icon('pin') + esc(program.location) + '</span>' : '') +
     (program?.estimatedMinutes != null
       ? '<span>' + icon('time') + esc(program.estimatedMinutes) + ' min</span>'
       : '') +
@@ -865,8 +869,9 @@ function datesDialog() {
         .map((d) =>
           button(
             'choose-date',
-            esc(showDate(d, { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' })) +
-              (d === today() ? ' · Today' : ''),
+            d === sampleDate ? 'Sample workout' :
+              esc(showDate(d, { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' })) +
+                (d === today() ? ' · Today' : ''),
             d === date ? 'check' : 'today',
             'secondary',
             'data-date="' + d + '"',
@@ -1146,6 +1151,11 @@ document.addEventListener('click', async (e) => {
       case 'credits':
       case 'close':
         $('#dialog').close();
+        break;
+      case 'open-sample':
+        location.hash = 'today';
+        changeDay(sampleDate);
+        window.scrollTo(0, 0);
         break;
       case 'dates':
         datesDialog();

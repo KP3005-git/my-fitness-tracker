@@ -209,6 +209,9 @@ main {
   border-radius: 6px;
   font-size: 0.88rem;
 }
+.sample-banner {
+  margin-bottom: 12px;
+}
 .hero {
   position: relative;
   isolation: isolate;
