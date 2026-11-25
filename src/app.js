@@ -592,10 +592,12 @@ function updateProgress() {
   $('#completed').textContent = done;
   const planned = unspecified ? '—' : total;
   $('#planned').textContent = planned;
-  $('.progress-chip').textContent = done + ' / ' + planned + ' sets';
+  const chip = $('.progress-chip');
+  chip.textContent = done + ' / ' + planned + ' sets';
   const p = total && !unspecified ? Math.min(100, Math.round((100 * done) / total)) : 0;
   $('#percent').textContent = total && !unspecified ? p + '%' : '';
   $('#percent').style.setProperty('--completion', p + '%');
+  chip.style.setProperty('--completion', p + '%');
 }
 
 function heading(name, action = '') {
