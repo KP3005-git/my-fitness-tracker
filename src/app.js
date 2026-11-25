@@ -39,6 +39,7 @@ const button = (action, label, ico, classes = '', extra = '') =>
   label +
   '</button>';
 const title = (label, ico) => '<h2 class="panel-title">' + icon(ico) + esc(label) + '</h2>';
+const sampleDate = '2000-01-01';
 const shortDate = (d) => showDate(d, { month: 'short', day: 'numeric' });
 let date = today(),
   followToday = true,
@@ -82,9 +83,13 @@ function recompute() {
   history = mergeHistory(feed.log?.entries || [], locals);
 }
 function displayBanners() {
-  $('#banners').innerHTML = [...new Set([deviceNotice, ...notices, feed.meta?.message].filter(Boolean))]
+  const messages = [...new Set([deviceNotice, ...notices].filter(Boolean))]
     .map((s) => '<p>' + esc(s) + '</p>')
     .join('');
+  const sample = route() === 'today' && date !== sampleDate && feed.meta?.message
+    ? button('open-sample', esc(feed.meta.message), 'today', 'secondary sample-banner')
+    : '';
+  $('#banners').innerHTML = messages + sample;
 }
 function tell(s) {
   if ($('#dialog').open && $('#dialog-status')) {
@@ -225,9 +230,8 @@ function workoutView() {
     dateButton() +
     '<h1>' +
     esc(heading) +
-    '</h1><div class="hero-meta"><span>' +
-    icon('pin') +
-    'Gym</span>' +
+    '</h1><div class="hero-meta">' +
+    (program?.location ? '<span>' + icon('pin') + esc(program.location) + '</span>' : '') +
     (program?.estimatedMinutes != null
       ? '<span>' + icon('time') + esc(program.estimatedMinutes) + ' min</span>'
       : '') +
@@ -238,15 +242,7 @@ function workoutView() {
     (lifts.length === 1 ? '' : 's') +
     '</span></div></div></section>';
   const plan =
-    '<section class="plan"><div class="section-head"><h2>Workout plan</h2>' +
-    button(
-      'export',
-      'Share to TITAN',
-      'share',
-      'subtle share-top',
-      'aria-label="Export / Share to TITAN"',
-    ) +
-    '</div>' +
+    '<section class="plan"><div class="section-head"><h2>Workout plan</h2></div>' +
     (!program
       ? '<div class="panel rest-state"><h3>' +
         (lifts.length ? 'Saved on this device' : 'No lifting programmed') +
@@ -321,12 +317,14 @@ function workoutView() {
         (program.coachNote ? '<p><b>TITAN</b> ' + esc(program.coachNote) + '</p>' : '') +
         '</details>'
       : '';
-  return hero + brief + '<div class="workout-layout">' + plan + rail + '</div>';
+  const chip = '<div class="progress-chip" aria-live="polite"></div>';
+  return hero + chip + brief + '<div class="workout-layout">' + plan + rail + '</div>';
 }
 function exerciseCard(ex, i) {
   const log = daySession().lifts.get(ex.key) || { slots: {} },
     on = expanded.has(ex.key),
-    uni = ex.laterality === 'unilateral';
+    uni = ex.laterality === 'unilateral',
+    hasTimer = ex.restSec > 0;
   const number = String(i + 1).padStart(2, '0');
   const tags = [
     ex.sets != null ? ex.sets + ' sets' : 'Sets open',
@@ -353,6 +351,8 @@ function exerciseCard(ex, i) {
     ['RIR', ex.rir ?? '—', ''],
   ];
   const previous = history.findLast((r) => r.date < date && r.exerciseId === ex.exerciseId);
+  const previousLoad = previous && detailsOf(previous).findLast((set) => set.weightLb != null)?.weightLb;
+  const gridClass = (uni ? ' uni' : '') + (hasTimer ? ' has-timer' : '');
   const last = ex.lastSession || (previous ? weightText(previous) + ' lb · ' + repText(previous) : '—');
   const info = [
     ['Load note', ex.weightNote],
@@ -366,7 +366,11 @@ function exerciseCard(ex, i) {
     Number(log.extraSets) || 0,
     ...Object.keys(log.slots).map((n) => Number(n) + 1),
   );
-  const fields = (field, slot, label, placeholder, inputmode, value) =>
+  const fields = (field, slot, label, inputmode, value) => {
+    const name = esc(ex.name + ' set ' + (slot + 1) + ' ' + label);
+    const stepButton = (direction, symbol, verb) =>
+      button('step-set', symbol, '', 'step-btn', 'data-direction="' + direction + '" aria-label="' + verb + ' ' + name + '"');
+    return '<div class="set-field"><div class="stepper">' +
     '<input type="text" inputmode="' +
     inputmode +
     '" autocomplete="off" data-i="' +
@@ -376,17 +380,20 @@ function exerciseCard(ex, i) {
     '" data-slot="' +
     slot +
     '" aria-label="' +
-    esc(ex.name + ' set ' + (slot + 1) + ' ' + label) +
-    '" placeholder="' +
-    placeholder +
-    '" value="' +
+    name +
+    '" placeholder="—" value="' +
     esc(value) +
-    '">';
-  const rows = Array.from({ length: Math.min(visibleSlots, 1000) }, (_, s) => {
+    '">' +
+    stepButton(-1, '−', 'Decrease') +
+    stepButton(1, '+', 'Increase') +
+    '</div></div>';
+  };
+  const slots = Array.from({ length: Math.min(visibleSlots, 1000) }, (_, s) => s);
+  const rows = slots.map((s) => {
     const input = log.slots[s] || {};
     return (
-      '<div class="set-row ' +
-      (uni ? 'uni' : '') +
+      '<div class="set-row' +
+      gridClass +
       '"><span class="set-index" data-set="' +
       i +
       '-' +
@@ -394,12 +401,12 @@ function exerciseCard(ex, i) {
       '">' +
       String(s + 1).padStart(2, '0') +
       '</span>' +
-      fields('weight', s, 'weight in pounds', '—', 'decimal', input.weight ?? ex.weightLb) +
+      fields('weight', s, 'weight in pounds', 'decimal', input.weight ?? previousLoad ?? ex.weightLb) +
       (uni
-        ? fields('right', s, 'right reps', '—', 'numeric', input.right) +
-          fields('left', s, 'left reps', '—', 'numeric', input.left)
-        : fields('reps', s, 'reps', '—', 'numeric', input.reps)) +
-      (ex.restSec > 0
+        ? fields('right', s, 'right reps', 'numeric', input.right) +
+          fields('left', s, 'left reps', 'numeric', input.left)
+        : fields('reps', s, 'reps', 'numeric', input.reps)) +
+      (hasTimer
         ? button(
             'rest',
             icon('timer') + '<span class="rest-word">Rest</span>',
@@ -413,38 +420,27 @@ function exerciseCard(ex, i) {
               (s + 1) +
               '"',
           )
-        : '<span></span>') +
-      '</div>' +
-      (uni
-        ? '<details class="side-notes"><summary>Side notes · set ' +
-          (s + 1) +
-          '</summary><div class="note-grid">' +
-          ['right', 'left']
-            .map(
-              (side) =>
-                '<label>' +
-                side +
-                '<input data-i="' +
-                i +
-                '" data-slot="' +
-                s +
-                '" data-field="' +
-                side +
-                'Note" value="' +
-                esc(input[side + 'Note']) +
-                '"></label>',
-            )
-            .join('') +
-          '</div></details>'
-        : '')
+        : '') +
+      '</div>'
     );
   }).join('');
+  const sideNotes = uni
+    ? '<details class="guidance side-notes"><summary>Side notes (optional)</summary>' +
+      slots.map((slot) =>
+        '<fieldset class="note-grid"><legend>Set ' + (slot + 1) + '</legend>' +
+        ['right', 'left'].map((side) =>
+          '<label>' + side + '<input data-i="' + i +
+          '" data-slot="' + slot + '" data-field="' + side + 'Note" value="' +
+          esc(log.slots[slot]?.[side + 'Note']) + '"></label>',
+        ).join('') + '</fieldset>',
+      ).join('') + '</details>'
+    : '';
   return (
     '<article class="lift-card open">' +
     header +
     '<div class="lift-body" id="lift-' +
     i +
-    '"><div class="prescription">' +
+    '"><div class="lift-details"><div class="prescription">' +
     demo(ex, i) +
     '<div class="metrics">' +
     stats
@@ -472,15 +468,17 @@ function exerciseCard(ex, i) {
       : ex.sideNote
         ? '<p class="side-cue">' + esc(ex.sideNote) + '</p>'
         : '') +
-    '<div class="logger"><div class="logger-head"><h3>Set log</h3><span class="save-status" data-save="' +
+    '</div><div class="logger"><div class="logger-head"><h3>Set log</h3><span class="save-status" data-save="' +
     i +
-    '"></span></div><div class="set-labels ' +
-    (uni ? 'uni' : '') +
+    '"></span></div><div class="set-labels' +
+    gridClass +
     '"><span>Set</span><span>Load (lb)</span>' +
     (uni ? '<span>Right</span><span>Left</span>' : '<span>Reps</span>') +
-    '<span>Timer</span></div>' +
+    (hasTimer ? '<span>Timer</span>' : '') +
+    '</div>' +
     rows +
     (ex.sets == null ? button('add-set', 'Add set', 'plus', 'text-btn', 'data-i="' + i + '"') : '') +
+    sideNotes +
     '<details class="guidance log-notes"><summary>' +
     icon('note') +
     'Session notes ' +
@@ -513,11 +511,10 @@ function checkinView() {
   return (
     '<section class="panel checkin">' +
     title('Session check-in', 'note') +
-    '<label class="abs-check"><input type="checkbox" data-check="absDone" ' +
-    (s.check.absDone ? 'checked' : '') +
-    '><span>Abs complete</span></label>' +
     (a
-      ? '<details class="guidance"><summary>Abs block · ' +
+      ? '<label class="abs-check"><input type="checkbox" data-check="absDone" ' +
+        (s.check.absDone ? 'checked' : '') +
+        '><span>Abs complete</span></label><details class="guidance"><summary>Abs block · ' +
         (a.rounds == null ? 'Open rounds' : a.rounds + ' rounds') +
         icon('down') +
         '</summary><ul>' +
@@ -564,8 +561,8 @@ function checkinView() {
       .join('') +
     '<datalist id="areas">' +
     ['Knee', 'Neck', 'Back', 'Shoulders'].map((a) => '<option>' + a + '</option>').join('') +
-    '</datalist><div class="check-share">' +
-    button('export', 'Export / Share to TITAN', 'share', 'primary') +
+    '</datalist><div class="check-share" hidden>' +
+    button('export', 'Share to TITAN', 'share', 'primary') +
     '</div></section>'
   );
 }
@@ -591,11 +588,16 @@ function updateProgress() {
       );
   }
   if (!$('#completed')) return;
+  $('.check-share').hidden = done === 0;
   $('#completed').textContent = done;
-  $('#planned').textContent = unspecified ? '—' : total;
+  const planned = unspecified ? '—' : total;
+  $('#planned').textContent = planned;
+  const chip = $('.progress-chip');
+  chip.textContent = done + ' / ' + planned + ' sets';
   const p = total && !unspecified ? Math.min(100, Math.round((100 * done) / total)) : 0;
   $('#percent').textContent = total && !unspecified ? p + '%' : '';
   $('#percent').style.setProperty('--completion', p + '%');
+  chip.style.setProperty('--completion', p + '%');
 }
 
 function heading(name, action = '') {
@@ -629,9 +631,10 @@ function historyView() {
       .join('') +
     '</select></label>';
   return (
-    heading('Lift history', button('export-history', 'Export / Share to TITAN', 'share', 'primary')) +
+    heading('Lift history', rows.length ? button('export-history', 'Export history', 'share', 'primary') : '') +
     (!rows.length
-      ? '<section class="panel empty"><h2>No logged lifts yet</h2><p>Your first logged set will appear here.</p></section>'
+      ? '<section class="panel empty"><h2>No logged lifts yet</h2><p>Your first logged set will appear here.</p>' +
+        button('open-today', 'Open today’s workout', 'today', 'primary') + '</section>'
       : select +
         '<div class="charts">' +
         [
@@ -816,7 +819,10 @@ function targetsView() {
       })
       .join('') +
     '</div>' +
-    (!targets.length ? '<p class="panel">No targets posted yet.</p>' : '')
+    (!targets.length
+      ? '<section class="panel empty"><h2>No targets posted yet</h2>' +
+        button('open-sample', 'Try the sample workout', 'today', 'primary') + '</section>'
+      : '')
   );
 }
 function creditsView() {
@@ -861,8 +867,9 @@ function datesDialog() {
         .map((d) =>
           button(
             'choose-date',
-            esc(showDate(d, { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' })) +
-              (d === today() ? ' · Today' : ''),
+            d === sampleDate ? 'Sample workout' :
+              esc(showDate(d, { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' })) +
+                (d === today() ? ' · Today' : ''),
             d === date ? 'check' : 'today',
             'secondary',
             'data-date="' + d + '"',
@@ -1048,11 +1055,13 @@ function startTimer(ex) {
   timerPaint();
   tick = setInterval(timerPaint, 200);
 }
-function writeLift(i, field, value, slot) {
+function writeLift(i, field, value, slot, defaultWeight) {
   const ex = lifts[i],
     local = daySession().lifts.get(ex.key),
     pairs = [];
   if (!local?.meta) pairs.push([fieldKey(date, 'lift', ex.key, 'meta'), { ...ex, split: splitAt(date) }]);
+  if (defaultWeight !== undefined && local?.slots[slot]?.weight === undefined)
+    pairs.push([fieldKey(date, 'lift', ex.key, 'weight', slot), defaultWeight]);
   pairs.push([fieldKey(date, 'lift', ex.key, field, slot ?? null), value]);
   save(pairs);
 }
@@ -1076,7 +1085,10 @@ function handleInput(e) {
     }
   } else if (field && el.hasAttribute('data-i')) {
     if (['reps', 'right', 'left', 'weight'].includes(field) && !validInput(el, field !== 'weight')) return;
-    writeLift(Number(el.dataset.i), field, el.value, el.dataset.slot);
+    const weight = ['reps', 'right', 'left'].includes(field) && el.value !== ''
+      ? el.closest('.set-row').querySelector('[data-field="weight"]').value
+      : undefined;
+    writeLift(Number(el.dataset.i), field, el.value, el.dataset.slot, weight);
   } else return;
   recompute();
   updateProgress();
@@ -1113,14 +1125,19 @@ document.addEventListener('click', async (e) => {
     ex = lifts[i];
   try {
     switch (act) {
-      case 'toggle':
-        if (expanded.has(ex.key)) expanded.delete(ex.key);
-        else expanded.add(ex.key);
+      case 'toggle': {
+        const opening = !expanded.has(ex.key);
+        if (opening) expanded.add(ex.key);
+        else expanded.delete(ex.key);
         render();
-        document
-          .querySelector('[data-action="toggle"][data-i="' + i + '"]')
-          ?.focus({ preventScroll: true });
+        const toggle = document.querySelector('[data-action="toggle"][data-i="' + i + '"]');
+        toggle?.focus({ preventScroll: true });
+        if (opening && matchMedia('(max-width: 740px)').matches) {
+          const logger = toggle.closest('.lift-card').querySelector('.logger');
+          logger.scrollIntoView({ block: 'nearest' });
+        }
         break;
+      }
       case 'demo':
         demoDialog(ex);
         break;
@@ -1133,12 +1150,26 @@ document.addEventListener('click', async (e) => {
       case 'close':
         $('#dialog').close();
         break;
+      case 'open-today':
+      case 'open-sample':
+        location.hash = 'today';
+        changeDay(act === 'open-sample' ? sampleDate : today());
+        window.scrollTo(0, 0);
+        break;
       case 'dates':
         datesDialog();
         break;
       case 'choose-date':
         setDay(btn.dataset.date);
         break;
+      case 'step-set': {
+        const input = btn.closest('.stepper').querySelector('input');
+        const step = input.dataset.field === 'weight' ? 5 : 1;
+        const value = (numeric(input.value) ?? 0) + step * Number(btn.dataset.direction);
+        input.value = String(Math.max(0, Number(value.toFixed(10))));
+        input.dispatchEvent(new Event('input', { bubbles: true }));
+        break;
+      }
       case 'rest':
         startTimer(ex);
         break;
