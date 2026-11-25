@@ -321,7 +321,8 @@ function workoutView() {
         (program.coachNote ? '<p><b>TITAN</b> ' + esc(program.coachNote) + '</p>' : '') +
         '</details>'
       : '';
-  return hero + brief + '<div class="workout-layout">' + plan + rail + '</div>';
+  const chip = '<div class="progress-chip" aria-live="polite"></div>';
+  return hero + chip + brief + '<div class="workout-layout">' + plan + rail + '</div>';
 }
 function exerciseCard(ex, i) {
   const log = daySession().lifts.get(ex.key) || { slots: {} },
@@ -593,7 +594,9 @@ function updateProgress() {
   }
   if (!$('#completed')) return;
   $('#completed').textContent = done;
-  $('#planned').textContent = unspecified ? '—' : total;
+  const planned = unspecified ? '—' : total;
+  $('#planned').textContent = planned;
+  $('.progress-chip').textContent = done + ' / ' + planned + ' sets';
   const p = total && !unspecified ? Math.min(100, Math.round((100 * done) / total)) : 0;
   $('#percent').textContent = total && !unspecified ? p + '%' : '';
   $('#percent').style.setProperty('--completion', p + '%');
