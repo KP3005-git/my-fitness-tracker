@@ -122,6 +122,7 @@ button {
   font-weight: 600;
 }
 .appbar {
+  padding-top: env(safe-area-inset-top);
   background: #141415;
   border-bottom: 1px solid #2c2d2e;
 }
@@ -1177,6 +1178,9 @@ body:has(#timer:not([hidden])) {
     padding-left: 16px;
     padding-right: 16px;
   }
+  footer {
+    padding-bottom: 26px;
+  }
   .bar-inner {
     height: 58px;
   }
@@ -1202,7 +1206,7 @@ body:has(#timer:not([hidden])) {
     border-top: 1px solid #363738;
     justify-content: space-evenly;
     gap: 0;
-    padding: 4px 8px max(4px, env(safe-area-inset-bottom));
+    padding: 4px 8px calc(4px + env(safe-area-inset-bottom));
   }
   .appbar nav a {
     display: flex;
@@ -1222,7 +1226,7 @@ body:has(#timer:not([hidden])) {
     height: 20px;
   }
   body {
-    padding-bottom: 64px;
+    padding-bottom: calc(64px + env(safe-area-inset-bottom));
   }
   main {
     padding-top: 16px;
@@ -1304,7 +1308,7 @@ body:has(#timer:not([hidden])) {
     bottom: calc(70px + env(safe-area-inset-bottom));
   }
   body:has(#timer:not([hidden])) {
-    padding-bottom: 155px;
+    padding-bottom: calc(155px + env(safe-area-inset-bottom));
   }
   .section-head .subtle {
     font-size: 0.82rem;
@@ -1594,6 +1598,9 @@ dialog {
     border-top: 0;
     padding-top: 0;
     scroll-margin-bottom: calc(64px + env(safe-area-inset-bottom));
+  }
+  body:has(#timer:not([hidden])) .logger {
+    scroll-margin-bottom: calc(155px + env(safe-area-inset-bottom));
   }
   .mobile-brief {
     display: block;
