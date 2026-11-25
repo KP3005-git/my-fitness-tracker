@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "date": "2000-01-01",
+  "id": "sample",
+  "title": "Sample workout",
+  "split": "training",
+  "coachNote": "Try entering a set to see how the tracker works.",
+  "blocks": [
+    {
+      "id": "deadlift",
+      "exerciseId": "deadlift",
+      "name": "Barbell deadlift",
+      "weightLb": null,
+      "type": "exercise",
+      "sets": 3,
+      "repMin": 6,
+      "repMax": 8
+    },
+    {
+      "id": "leg-extension",
+      "exerciseId": "leg-extension",
+      "name": "Leg extension",
+      "weightLb": null,
+      "type": "exercise",
+      "laterality": "unilateral",
+      "sets": 3,
+      "repMin": 10,
+      "repMax": 12
+    },
+    {
+      "id": "sample-pair",
+      "type": "superset",
+      "rounds": 3,
+      "restSec": 75,
+      "items": [
+        {
+          "id": "seated-cable-row",
+          "exerciseId": "seated-cable-row",
+          "name": "Seated cable row",
+          "weightLb": null
+        },
+        {
+          "id": "lat-pull-down",
+          "exerciseId": "lat-pull-down",
+          "name": "Lat pulldown",
+          "weightLb": null
+        }
+      ]
+    }
+  ]
+}

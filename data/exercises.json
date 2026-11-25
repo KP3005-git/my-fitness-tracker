@@ -1,0 +1,114 @@
+{
+  "schemaVersion": 1,
+  "normalize": "lowercase; strip punctuation/apostrophes; '&' -> 'and'; collapse whitespace and hyphens to single spaces",
+  "lookup": {
+    "barbell deadlift": "deadlift",
+    "deadlift": "deadlift",
+    "lat pulldown": "lat-pull-down",
+    "leg extension": "leg-extension",
+    "barbell bench press": "bench-press",
+    "seated cable row": "seated-cable-row",
+    "straight arm pulldown": "straight-arm-lat-pull-down",
+    "hanging knee raise": "hanging-knee-raise",
+    "cable crunch": "cable-crunch"
+  },
+  "exercises": {
+    "deadlift": {
+      "id": "deadlift",
+      "name": "Barbell Deadlift",
+      "demo": "demos/illustrations/deadlift.gif",
+      "license": "CC BY-SA 4.0",
+      "attribution": "Bryl Lim (workout-guide). First frame adapted from Everkinetic, CC BY-SA 4.0.",
+      "aliases": [
+        "barbell deadlift",
+        "deadlift"
+      ],
+      "primaryMuscle": "Back",
+      "laterality": "bilateral"
+    },
+    "lat-pull-down": {
+      "id": "lat-pull-down",
+      "name": "Lat Pulldown",
+      "demo": "demos/video/lat-pull-down.gif",
+      "license": "CC0 1.0",
+      "attribution": "namnq/workout-free-videos (GymPlan clips), CC0 1.0.",
+      "aliases": [
+        "lat pulldown"
+      ],
+      "primaryMuscle": "Back",
+      "laterality": "bilateral"
+    },
+    "leg-extension": {
+      "id": "leg-extension",
+      "name": "Leg extension",
+      "demo": "demos/illustrations/leg-extension.gif",
+      "license": "CC BY-SA 4.0",
+      "attribution": "Bryl Lim / workout-guide. Some first frames adapted from Everkinetic.",
+      "aliases": [
+        "leg extension"
+      ],
+      "primaryMuscle": "Legs",
+      "laterality": "unilateral"
+    },
+    "bench-press": {
+      "id": "bench-press",
+      "name": "Barbell bench press",
+      "demo": "demos/illustrations/bench-press.gif",
+      "license": "CC BY-SA 4.0",
+      "attribution": "Bryl Lim / workout-guide. Some first frames adapted from Everkinetic.",
+      "aliases": [
+        "barbell bench press"
+      ],
+      "primaryMuscle": "Chest",
+      "laterality": "bilateral"
+    },
+    "seated-cable-row": {
+      "id": "seated-cable-row",
+      "name": "Seated cable row",
+      "demo": "demos/illustrations/seated-cable-row.gif",
+      "license": "CC BY-SA 4.0",
+      "attribution": "Bryl Lim / workout-guide. Some first frames adapted from Everkinetic.",
+      "aliases": [
+        "seated cable row"
+      ],
+      "primaryMuscle": "Back",
+      "laterality": "bilateral"
+    },
+    "straight-arm-lat-pull-down": {
+      "id": "straight-arm-lat-pull-down",
+      "name": "Straight-arm pulldown",
+      "demo": "demos/illustrations/straight-arm-lat-pull-down.gif",
+      "license": "CC BY-SA 4.0",
+      "attribution": "Bryl Lim / workout-guide. Some first frames adapted from Everkinetic.",
+      "aliases": [
+        "straight-arm pulldown"
+      ],
+      "primaryMuscle": "Back",
+      "laterality": "bilateral"
+    },
+    "hanging-knee-raise": {
+      "id": "hanging-knee-raise",
+      "name": "Hanging knee raise",
+      "demo": "demos/illustrations/hanging-knee-raise.gif",
+      "license": "CC BY-SA 4.0",
+      "attribution": "Bryl Lim / workout-guide. Some first frames adapted from Everkinetic.",
+      "aliases": [
+        "hanging knee raise"
+      ],
+      "primaryMuscle": "Abs",
+      "laterality": "bilateral"
+    },
+    "cable-crunch": {
+      "id": "cable-crunch",
+      "name": "Cable crunch",
+      "demo": "demos/illustrations/cable-crunch.gif",
+      "license": "CC BY-SA 4.0",
+      "attribution": "Bryl Lim / workout-guide. Some first frames adapted from Everkinetic.",
+      "aliases": [
+        "cable crunch"
+      ],
+      "primaryMuscle": "Abs",
+      "laterality": "bilateral"
+    }
+  }
+}
