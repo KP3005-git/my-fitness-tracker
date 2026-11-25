@@ -326,7 +326,8 @@ function workoutView() {
 function exerciseCard(ex, i) {
   const log = daySession().lifts.get(ex.key) || { slots: {} },
     on = expanded.has(ex.key),
-    uni = ex.laterality === 'unilateral';
+    uni = ex.laterality === 'unilateral',
+    hasTimer = ex.restSec > 0;
   const number = String(i + 1).padStart(2, '0');
   const tags = [
     ex.sets != null ? ex.sets + ' sets' : 'Sets open',
@@ -353,6 +354,8 @@ function exerciseCard(ex, i) {
     ['RIR', ex.rir ?? '—', ''],
   ];
   const previous = history.findLast((r) => r.date < date && r.exerciseId === ex.exerciseId);
+  const previousLoad = previous && detailsOf(previous).findLast((set) => set.weightLb != null)?.weightLb;
+  const gridClass = (uni ? ' uni' : '') + (hasTimer ? ' has-timer' : '');
   const last = ex.lastSession || (previous ? weightText(previous) + ' lb · ' + repText(previous) : '—');
   const info = [
     ['Load note', ex.weightNote],
@@ -366,7 +369,11 @@ function exerciseCard(ex, i) {
     Number(log.extraSets) || 0,
     ...Object.keys(log.slots).map((n) => Number(n) + 1),
   );
-  const fields = (field, slot, label, placeholder, inputmode, value) =>
+  const fields = (field, slot, label, inputmode, value) => {
+    const name = esc(ex.name + ' set ' + (slot + 1) + ' ' + label);
+    const stepButton = (direction, symbol, verb) =>
+      button('step-set', symbol, '', 'step-btn', 'data-direction="' + direction + '" aria-label="' + verb + ' ' + name + '"');
+    return '<div class="set-field"><div class="stepper">' +
     '<input type="text" inputmode="' +
     inputmode +
     '" autocomplete="off" data-i="' +
@@ -376,17 +383,20 @@ function exerciseCard(ex, i) {
     '" data-slot="' +
     slot +
     '" aria-label="' +
-    esc(ex.name + ' set ' + (slot + 1) + ' ' + label) +
-    '" placeholder="' +
-    placeholder +
-    '" value="' +
+    name +
+    '" placeholder="—" value="' +
     esc(value) +
-    '">';
-  const rows = Array.from({ length: Math.min(visibleSlots, 1000) }, (_, s) => {
+    '">' +
+    stepButton(-1, '−', 'Decrease') +
+    stepButton(1, '+', 'Increase') +
+    '</div></div>';
+  };
+  const slots = Array.from({ length: Math.min(visibleSlots, 1000) }, (_, s) => s);
+  const rows = slots.map((s) => {
     const input = log.slots[s] || {};
     return (
-      '<div class="set-row ' +
-      (uni ? 'uni' : '') +
+      '<div class="set-row' +
+      gridClass +
       '"><span class="set-index" data-set="' +
       i +
       '-' +
@@ -394,12 +404,12 @@ function exerciseCard(ex, i) {
       '">' +
       String(s + 1).padStart(2, '0') +
       '</span>' +
-      fields('weight', s, 'weight in pounds', '—', 'decimal', input.weight ?? ex.weightLb) +
+      fields('weight', s, 'weight in pounds', 'decimal', input.weight ?? previousLoad ?? ex.weightLb) +
       (uni
-        ? fields('right', s, 'right reps', '—', 'numeric', input.right) +
-          fields('left', s, 'left reps', '—', 'numeric', input.left)
-        : fields('reps', s, 'reps', '—', 'numeric', input.reps)) +
-      (ex.restSec > 0
+        ? fields('right', s, 'right reps', 'numeric', input.right) +
+          fields('left', s, 'left reps', 'numeric', input.left)
+        : fields('reps', s, 'reps', 'numeric', input.reps)) +
+      (hasTimer
         ? button(
             'rest',
             icon('timer') + '<span class="rest-word">Rest</span>',
@@ -413,32 +423,21 @@ function exerciseCard(ex, i) {
               (s + 1) +
               '"',
           )
-        : '<span></span>') +
-      '</div>' +
-      (uni
-        ? '<details class="side-notes"><summary>Side notes · set ' +
-          (s + 1) +
-          '</summary><div class="note-grid">' +
-          ['right', 'left']
-            .map(
-              (side) =>
-                '<label>' +
-                side +
-                '<input data-i="' +
-                i +
-                '" data-slot="' +
-                s +
-                '" data-field="' +
-                side +
-                'Note" value="' +
-                esc(input[side + 'Note']) +
-                '"></label>',
-            )
-            .join('') +
-          '</div></details>'
-        : '')
+        : '') +
+      '</div>'
     );
   }).join('');
+  const sideNotes = uni
+    ? '<details class="guidance side-notes"><summary>Side notes (optional)</summary>' +
+      slots.map((slot) =>
+        '<fieldset class="note-grid"><legend>Set ' + (slot + 1) + '</legend>' +
+        ['right', 'left'].map((side) =>
+          '<label>' + side + '<input data-i="' + i +
+          '" data-slot="' + slot + '" data-field="' + side + 'Note" value="' +
+          esc(log.slots[slot]?.[side + 'Note']) + '"></label>',
+        ).join('') + '</fieldset>',
+      ).join('') + '</details>'
+    : '';
   return (
     '<article class="lift-card open">' +
     header +
@@ -474,13 +473,15 @@ function exerciseCard(ex, i) {
         : '') +
     '</div><div class="logger"><div class="logger-head"><h3>Set log</h3><span class="save-status" data-save="' +
     i +
-    '"></span></div><div class="set-labels ' +
-    (uni ? 'uni' : '') +
+    '"></span></div><div class="set-labels' +
+    gridClass +
     '"><span>Set</span><span>Load (lb)</span>' +
     (uni ? '<span>Right</span><span>Left</span>' : '<span>Reps</span>') +
-    '<span>Timer</span></div>' +
+    (hasTimer ? '<span>Timer</span>' : '') +
+    '</div>' +
     rows +
     (ex.sets == null ? button('add-set', 'Add set', 'plus', 'text-btn', 'data-i="' + i + '"') : '') +
+    sideNotes +
     '<details class="guidance log-notes"><summary>' +
     icon('note') +
     'Session notes ' +
@@ -1048,11 +1049,13 @@ function startTimer(ex) {
   timerPaint();
   tick = setInterval(timerPaint, 200);
 }
-function writeLift(i, field, value, slot) {
+function writeLift(i, field, value, slot, defaultWeight) {
   const ex = lifts[i],
     local = daySession().lifts.get(ex.key),
     pairs = [];
   if (!local?.meta) pairs.push([fieldKey(date, 'lift', ex.key, 'meta'), { ...ex, split: splitAt(date) }]);
+  if (defaultWeight !== undefined && local?.slots[slot]?.weight === undefined)
+    pairs.push([fieldKey(date, 'lift', ex.key, 'weight', slot), defaultWeight]);
   pairs.push([fieldKey(date, 'lift', ex.key, field, slot ?? null), value]);
   save(pairs);
 }
@@ -1076,7 +1079,10 @@ function handleInput(e) {
     }
   } else if (field && el.hasAttribute('data-i')) {
     if (['reps', 'right', 'left', 'weight'].includes(field) && !validInput(el, field !== 'weight')) return;
-    writeLift(Number(el.dataset.i), field, el.value, el.dataset.slot);
+    const weight = ['reps', 'right', 'left'].includes(field) && el.value !== ''
+      ? el.closest('.set-row').querySelector('[data-field="weight"]').value
+      : undefined;
+    writeLift(Number(el.dataset.i), field, el.value, el.dataset.slot, weight);
   } else return;
   recompute();
   updateProgress();
@@ -1144,6 +1150,14 @@ document.addEventListener('click', async (e) => {
       case 'choose-date':
         setDay(btn.dataset.date);
         break;
+      case 'step-set': {
+        const input = btn.closest('.stepper').querySelector('input');
+        const step = input.dataset.field === 'weight' ? 5 : 1;
+        const value = (numeric(input.value) ?? 0) + step * Number(btn.dataset.direction);
+        input.value = String(Math.max(0, Number(value.toFixed(10))));
+        input.dispatchEvent(new Event('input', { bubbles: true }));
+        break;
+      }
       case 'rest':
         startTimer(ex);
         break;
