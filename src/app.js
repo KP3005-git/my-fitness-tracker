@@ -444,7 +444,7 @@ function exerciseCard(ex, i) {
     header +
     '<div class="lift-body" id="lift-' +
     i +
-    '"><div class="prescription">' +
+    '"><div class="lift-details"><div class="prescription">' +
     demo(ex, i) +
     '<div class="metrics">' +
     stats
@@ -472,7 +472,7 @@ function exerciseCard(ex, i) {
       : ex.sideNote
         ? '<p class="side-cue">' + esc(ex.sideNote) + '</p>'
         : '') +
-    '<div class="logger"><div class="logger-head"><h3>Set log</h3><span class="save-status" data-save="' +
+    '</div><div class="logger"><div class="logger-head"><h3>Set log</h3><span class="save-status" data-save="' +
     i +
     '"></span></div><div class="set-labels ' +
     (uni ? 'uni' : '') +
@@ -1113,14 +1113,19 @@ document.addEventListener('click', async (e) => {
     ex = lifts[i];
   try {
     switch (act) {
-      case 'toggle':
-        if (expanded.has(ex.key)) expanded.delete(ex.key);
-        else expanded.add(ex.key);
+      case 'toggle': {
+        const opening = !expanded.has(ex.key);
+        if (opening) expanded.add(ex.key);
+        else expanded.delete(ex.key);
         render();
-        document
-          .querySelector('[data-action="toggle"][data-i="' + i + '"]')
-          ?.focus({ preventScroll: true });
+        const toggle = document.querySelector('[data-action="toggle"][data-i="' + i + '"]');
+        toggle?.focus({ preventScroll: true });
+        if (opening && matchMedia('(max-width: 740px)').matches) {
+          const logger = toggle.closest('.lift-card').querySelector('.logger');
+          logger.scrollIntoView({ block: 'nearest' });
+        }
         break;
+      }
       case 'demo':
         demoDialog(ex);
         break;

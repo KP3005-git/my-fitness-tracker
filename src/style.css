@@ -548,6 +548,9 @@ main {
   width: 17px;
   height: 17px;
 }
+.lift-details {
+  display: contents;
+}
 .lift-body {
   border-top: 1px solid var(--line);
   padding: 17px 20px 12px;
@@ -1167,21 +1170,24 @@ body:has(#timer:not([hidden])) {
     padding-top: 16px;
   }
   .hero {
-    min-height: 200px;
-    background-position: 70% 37%;
+    min-height: 0;
+    background: linear-gradient(140deg, #2e2f31ed, #1f2021f2);
   }
   .hero:after {
-    background: linear-gradient(90deg, #131414ef 2%, #141415b5 40%, #13141422 100%);
+    display: none;
   }
   .hero-body {
-    padding: 17px 20px 22px;
+    padding: 8px 16px 12px;
   }
   .hero h1 {
-    font-size: 4.2rem;
+    font-size: 2rem;
+    line-height: 1;
+    transform: none;
+    text-shadow: none;
   }
   .hero-meta {
     font-size: 0.81rem;
-    margin-top: 17px;
+    margin-top: 8px;
   }
   .hero-meta span + span:before {
     margin: 0 8px;
@@ -1507,12 +1513,20 @@ dialog {
     background: linear-gradient(145deg, #8394a735, #60738730);
     border-color: #8396aa47;
   }
-  .hero:after {
-    background: linear-gradient(0deg, #0a0c0dd4 0%, transparent 31%),
-      linear-gradient(90deg, #101214d9, #10121488 49%, #10121405 92%);
-  }
   .hero .date-btn {
     font-size: 0.74rem;
+    margin-bottom: 0;
+  }
+  .lift-body {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .logger {
+    order: -1;
+    border-top: 0;
+    padding-top: 0;
+    scroll-margin-bottom: calc(64px + env(safe-area-inset-bottom));
   }
   .mobile-brief {
     display: block;
