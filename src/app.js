@@ -189,6 +189,7 @@ function demoInfo(ex) {
   if (src) seenDemos.add(src);
   return {
     src: src || fallback,
+    label: src === library.demo ? library.demoLabel : null,
     fallback,
     caption: src
       ? [library.attribution || ex.attribution, library.license || ex.license]
@@ -196,24 +197,6 @@ function demoInfo(ex) {
           .join(' · ') || 'See demonstration attribution.'
       : 'Equipment placeholder · Demo pending.',
   };
-}
-function demo(ex, index) {
-  const d = demoInfo(ex);
-  return (
-    '<button class="demo" ' +
-    attrs('demo', 'data-i="' + index + '"') +
-    ' aria-label="Enlarge demo for ' +
-    esc(ex.name) +
-    '"><img src="./' +
-    esc(d.src) +
-    '" data-fallback="' +
-    d.fallback +
-    '" alt="' +
-    (d.src === d.fallback ? 'Equipment placeholder' : esc(ex.name) + ' demonstration') +
-    '"><span>' +
-    icon('expand') +
-    '</span></button>'
-  );
 }
 const dateButton = () =>
   button(
@@ -424,6 +407,7 @@ function exerciseCard(ex, i) {
       '</div>'
     );
   }).join('');
+  const movement = demoInfo(ex);
   const sideNotes = uni
     ? '<details class="guidance side-notes"><summary>Side notes (optional)</summary>' +
       slots.map((slot) =>
@@ -441,7 +425,6 @@ function exerciseCard(ex, i) {
     '<div class="lift-body" id="lift-' +
     i +
     '"><div class="lift-details"><div class="prescription">' +
-    demo(ex, i) +
     '<div class="metrics">' +
     stats
       .map(
@@ -468,9 +451,13 @@ function exerciseCard(ex, i) {
       : ex.sideNote
         ? '<p class="side-cue">' + esc(ex.sideNote) + '</p>'
         : '') +
-    '</div><div class="logger"><div class="logger-head"><h3>Set log</h3><span class="save-status" data-save="' +
+    '</div><div class="logger"><div class="logger-head"><div><h3>Set log</h3><span class="save-status" data-save="' +
     i +
-    '"></span></div><div class="set-labels' +
+    '"></span></div>' +
+    (movement.src !== movement.fallback
+      ? button('demo', 'Movement', 'play', 'secondary movement-btn', 'data-i="' + i + '" aria-label="View movement for ' + esc(ex.name) + '"')
+      : '') +
+    '</div><div class="set-labels' +
     gridClass +
     '"><span>Set</span><span>Load (lb)</span>' +
     (uni ? '<span>Right</span><span>Left</span>' : '<span>Reps</span>') +
@@ -751,7 +738,7 @@ function drawCharts() {
       ctx.stroke();
     }
     ctx.beginPath();
-    ctx.strokeStyle = '#829cb6';
+    ctx.strokeStyle = '#4169e1';
     ctx.lineWidth = 2;
     let pen = false;
     vals.forEach((v, i) => {
@@ -766,7 +753,7 @@ function drawCharts() {
     ctx.stroke();
     vals.forEach((v, i) => {
       if (v == null) return;
-      ctx.fillStyle = '#aec0d0';
+      ctx.fillStyle = '#91adff';
       ctx.beginPath();
       ctx.arc(x(i), y(v), 4, 0, Math.PI * 2);
       ctx.fill();
@@ -828,7 +815,7 @@ function targetsView() {
 function creditsView() {
   return (
     heading('Attribution') +
-    '<section class="panel credits"><h2>Exercise illustrations</h2><p>Bryl Lim created the workout-guide illustrations. Some first frames use work by Everkinetic. TITAN adapted the GIFs with a dark background at 360 × 360 pixels and a 1–2–3–2 frame sequence at 0.8 seconds per frame. These adaptations remain under Creative Commons Attribution-ShareAlike 4.0 International.</p><p><a href="https://github.com/bryllim/workout-guide">Bryl Lim · workout-guide</a> · <a href="https://github.com/everkinetic/data">Everkinetic</a> · <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a></p><h2>Gym clips</h2><p>The optional video library uses GymPlan clips from namnq’s workout-free-videos v2.0.0, released under CC0 1.0 Universal.</p><p><a href="https://github.com/namnq/workout-free-videos">Clip source</a> · <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0 1.0</a></p><h2>Starter artwork</h2><p>The animated equipment placeholders are original CC0 illustrations. Barlow Condensed by Jeremy Tribby is distributed under the SIL Open Font License.</p><p><a href="./demos/ATTRIBUTION.md">Demo credits</a> · <a href="./demos/licenses/CC-BY-SA-4.0.txt">BY-SA license</a> · <a href="./demos/licenses/CC0-1.0.txt">CC0 dedication</a> · <a href="./assets/fonts/OFL.txt">Font license</a></p></section>'
+    '<section class="panel credits"><h2>Exercise illustrations</h2><p>Bryl Lim created the workout-guide illustrations. Some first frames use work by Everkinetic. The app resizes the source poses and combines them into looping illustrations. These adaptations remain under Creative Commons Attribution-ShareAlike 4.0 International.</p><p><a href="https://github.com/bryllim/workout-guide">Bryl Lim · workout-guide</a> · <a href="https://github.com/everkinetic/data">Everkinetic</a> · <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a></p><h2>Gym clips</h2><p>The optional video library uses GymPlan clips from namnq’s workout-free-videos v2.0.0, released under CC0 1.0 Universal.</p><p><a href="https://github.com/namnq/workout-free-videos">Clip source</a> · <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0 1.0</a></p><h2>Starter artwork</h2><p>The animated equipment placeholders are original CC0 illustrations. Barlow Condensed by Jeremy Tribby is distributed under the SIL Open Font License.</p><p><a href="./demos/ATTRIBUTION.md">Demo credits</a> · <a href="./demos/licenses/CC-BY-SA-4.0.txt">BY-SA license</a> · <a href="./demos/licenses/CC0-1.0.txt">CC0 dedication</a> · <a href="./assets/fonts/OFL.txt">Font license</a></p></section>'
   );
 }
 function dialog(name, body) {
@@ -907,6 +894,7 @@ function demoDialog(ex) {
   const d = demoInfo(ex);
   dialog(
     ex.name || ex.exerciseId,
+    (d.label ? '<p class="demo-variant">Related movement: ' + esc(d.label) + '</p>' : '') +
     '<img class="enlarged" src="./' +
       esc(d.src) +
       '" data-fallback="' +
@@ -914,7 +902,7 @@ function demoDialog(ex) {
       '" alt="' +
       esc(
         (d.src === d.fallback ? 'Equipment placeholder for ' : 'Demonstration of ') +
-          (ex.name || ex.exerciseId),
+          (d.label || ex.name || ex.exerciseId),
       ) +
       '"><p class="muted demo-caption">' +
       esc(d.caption) +
