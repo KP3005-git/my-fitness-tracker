@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-26",
+  "id": "shoulders-deww",
+  "title": "Shoulders (DEWW day)",
+  "split": "shoulders",
+  "estimatedMinutes": 45,
+  "coachNote": "Happy Thanksgiving. Chase the squeeze, not the weight. Tension on every rep.",
+  "progressionRule": "Double progression: stay at a weight until every set hits the top of the range, then add.",
+  "warmup": {"durationMin": 5, "instructions": "Band pull-aparts 2x15, arm circles, then 1-2 light sets on the bar."},
+  "blocks": [
+    {"type": "exercise", "id": "press", "exerciseId": "seated-barbell-shoulder-press", "name": "Seated barbell shoulder press",
+     "sets": 3, "repMin": 8, "repMax": 10, "weightLb": 115, "weightNote": "35 per side + bar", "restSec": 120, "rir": "1-2",
+     "laterality": "bilateral", "lastSession": "8, 8, 8 twice", "goal": "Get a 9 or 10. At 3x10 add 5 lb per side.", "swap": "Hammer Strength or machine shoulder press"},
+    {"type": "superset", "id": "laterals", "rounds": 3, "restSec": 90, "items": [
+      {"id": "straight-lateral", "exerciseId": "dumbbell-lateral-raise", "name": "Seated straight-arm DB lateral raise", "weightLb": 22.5, "weightNote": "per dumbbell",
+       "repMin": 10, "repMax": 12, "cues": "Start DBs slightly in front, like lifting two heavy suitcases. Lead with elbows, arms straight.", "swap": "Cable lateral raise"},
+      {"id": "bent-lateral", "name": "Bent-arm (90 degree) lateral raise", "weightLb": 22.5, "weightNote": "same DBs",
+       "repMin": 10, "repMax": 15, "cues": "Last round only: finish with 15 partials, arms locked, hover 6 in off hips, out 6 in and back, squeeze."}
+    ]},
+    {"type": "exercise", "id": "front-raise", "name": "Seated DB front raise", "sets": 3, "repMin": 10, "repMax": 12, "weightLb": 15, "weightNote": "per dumbbell, last logged",
+     "restSec": 75, "rir": "1-2", "laterality": "bilateral", "cues": "Lean back a little, neutral grip, raise slightly toward center, stop just above shoulder height, no pause at the bottom.", "swap": "Cable or plate front raise"},
+    {"type": "superset", "id": "rear-row", "rounds": 3, "restSec": 75, "items": [
+      {"id": "rear-fly", "name": "Seated rear delt fly (2 grips)", "weightLb": null, "repMin": 10, "repMax": 12, "rir": "1-2",
+       "cues": "Bend fully forward, feet out front. Palms back (elbows to ears) 10-12, then palms forward 6-8 more, same DBs.", "swap": "Reverse pec deck"},
+      {"id": "cs-row", "name": "Chest-supported DB row", "weightLb": null, "repMin": 10, "repMax": 12, "rir": "1-2", "swap": "Hammer Strength row"}
+    ]},
+    {"type": "exercise", "id": "shrugs", "name": "Seated DB shrugs", "sets": 3, "repMin": 12, "repMax": 15, "weightLb": null, "restSec": 60, "rir": "1-2",
+     "laterality": "bilateral", "cues": "Lean forward to stretch traps, sit tall, shrug up and back, pull with pinkies. Pick a weight and report it.", "swap": "Barbell or Smith shrugs"}
+  ],
+  "abs": {"rounds": 3, "items": [{"exerciseId": "hanging-knee-raise", "name": "Hanging leg raise", "reps": "10-15"}, {"name": "Plank", "reps": "30-45 sec"}]}
+}
