@@ -38,7 +38,7 @@ await writeFile(
   path.join(dist, 'src/demo-files.js'),
   'export const demoFiles = ' + JSON.stringify(demos) + ';\n',
 );
-const shell = files.filter((name) => !name.startsWith('data/') && !demos.includes(name));
+const shell = files.filter((name) => (!name.startsWith('data/') || name.startsWith('data/weekly/')) && !demos.includes(name));
 const template = await readFile(path.join(root, 'scripts/sw-template.js'), 'utf8');
 const hash = createHash('sha256').update(template);
 for (const file of files) hash.update(file).update(await readFile(path.join(dist, file)));

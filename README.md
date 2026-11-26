@@ -32,17 +32,20 @@ git push -u origin main
 
 ## How TITAN updates the app
 
-All committed data files have numeric `schemaVersion: 1`. The files in `data/` include a demonstration workout and empty history and target lists. Dates use `YYYY-MM-DD` in America/Indianapolis. Loads are pounds. Use `null` for unknown values.
+All committed data files have numeric `schemaVersion: 1`. The files in `data/` include a sample workout, recurring weekly templates, and empty history and target lists. Dates use `YYYY-MM-DD` in America/Indianapolis. Loads are pounds. Use `null` for unknown values.
 
 | File | Contents |
 | --- | --- |
 | `data/workouts/YYYY-MM-DD.json` | Date, split, warm-up, coach note, ordered exercise/superset/circuit blocks and optional abs. Group items inherit rounds and rest. Keep block and exercise IDs stable across edits. |
+| `data/weekly/{mon,tue,wed,thu,fri,sat,sun}.json` | Schema-v1 templates for Today. The reference dates are January 3–9, 2000, in weekday order. The app uses the current Indianapolis date for logging. |
 | `data/exercises.json` | Stable IDs, aliases, normalized name lookup, laterality, demo paths and credits. Paths are relative, e.g. `demos/illustrations/deadlift.gif`. |
 | `data/log.json` | Accepted history with reps as an integer array or separate right/left arrays. |
 | `data/targets.json` | Target weights, set and rep goals, and TITAN’s progression rules. |
 | `data/meta.json` | Optional latest workout date and message. |
 
-Commit the JSON and push to `main`. The build indexes dated workout files and available demos. The app checks programming on open, date changes and reconnect. A failed update keeps the last valid copy when available. A new shell finishes installing after open tracker windows close.
+To publish a daily workout, copy [the sample](data/workouts/2000-01-01.json), set its `date` to the filename’s date, and fill in `title`, `split` and `blocks`. An exercise block uses `type: "exercise"` with `id`, `exerciseId` and `name`. Add `sets`, `repMin`, `repMax`, `weightLb`, `restSec` and `rir` only when known. Use `laterality: "unilateral"` and `sideNote` for side-specific instructions, and `weightNote` for a load range. An empty `abs.items` array supports an abs check-in with no fixed exercises. If you use `latestWorkoutDate` in `data/meta.json`, point it at an actual dated workout.
+
+Commit the JSON and push to `main`. The build indexes dated workout files and available demos. A valid dated workout, including a cached copy, takes priority over the weekday template. The sample remains selectable by date. Weekly templates repeat without an end date and are included in the offline app.
 
 ## Logging and handoff
 

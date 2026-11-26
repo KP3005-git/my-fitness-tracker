@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "date": "2000-01-05",
+  "id": "weekly-wed",
+  "title": "Legs",
+  "split": "legs",
+  "blocks": [
+    {
+      "id": "belt-squat",
+      "exerciseId": "belt-squat",
+      "name": "Belt squat",
+      "type": "exercise",
+      "weightLb": 240,
+      "sets": 4,
+      "rir": "1–2",
+      "repMin": 8,
+      "repMax": 12
+    },
+    {
+      "id": "smith-machine-rdl",
+      "exerciseId": "smith-machine-rdl",
+      "name": "Smith machine RDL",
+      "type": "exercise",
+      "weightLb": 180,
+      "sets": 3,
+      "rir": "1–2",
+      "repMin": 8,
+      "repMax": 10
+    },
+    {
+      "id": "leg-curl",
+      "exerciseId": "leg-curl",
+      "name": "Leg curl",
+      "type": "exercise",
+      "weightLb": 145,
+      "sets": 3,
+      "rir": "1–2",
+      "repMin": 10,
+      "repMax": 12
+    },
+    {
+      "id": "leg-extension",
+      "exerciseId": "leg-extension",
+      "name": "Single-leg extension",
+      "type": "exercise",
+      "weightLb": null,
+      "sets": 3,
+      "rir": "1–2",
+      "laterality": "unilateral",
+      "weightNote": "Right: 60–65 lb. Left load is open.",
+      "sideNote": "Right: 3 × 10 with a 3-second lowering. Left: 3 × 6–10.",
+      "cues": "Post right-ACL: right leg first, extra right reps. Stop on sharp knee pain."
+    },
+    {
+      "id": "standing-calf-raise",
+      "exerciseId": "standing-calf-raise",
+      "name": "Standing calf raise",
+      "type": "exercise",
+      "weightLb": 260,
+      "sets": 3,
+      "rir": "1–2",
+      "repMin": 12,
+      "repMax": 15
+    }
+  ],
+  "abs": {
+    "items": []
+  },
+  "estimatedMinutes": 45,
+  "coachNote": "Post right-ACL: right leg first, extra right reps. Stop on sharp knee pain. Train at RIR 1–2. Optional abs finisher.",
+  "progressionRule": "Stay at the same weight until all prescribed sets reach the top of the rep range. Then add weight."
+}

@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "date": "2000-01-09",
+  "id": "weekly-sun",
+  "title": "Cardio + abs",
+  "split": "cardio",
+  "blocks": [],
+  "abs": {
+    "items": []
+  },
+  "coachNote": "Cardio + abs. Choose your own exercises."
+}

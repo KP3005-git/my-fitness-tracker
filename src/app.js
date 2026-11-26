@@ -124,11 +124,20 @@ async function loadDay(reset = true) {
   ];
   const results = await Promise.all(specs.map(([k, p]) => fetchFeed(k, p, d)));
   if (token !== serial) return;
+  let weekly = null;
+  if (!results[0].data && d === today()) {
+    // This reference week supplies a valid schema-v1 date for each template.
+    const weekday = (new Date(d + 'T12:00:00Z').getUTCDay() + 6) % 7;
+    const key = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'][weekday];
+    const referenceDate = '2000-01-0' + (weekday + 3);
+    weekly = await fetchFeed('workout', 'data/weekly/' + key + '.json', referenceDate);
+  }
+  if (token !== serial) return;
   const apply = () => {
     if (token !== serial) return;
     feed = Object.fromEntries(specs.map(([k], i) => [k, results[i].data]));
-    program = feed.workout;
-    notices = results.map((r) => r.notice).filter(Boolean);
+    program = feed.workout || (weekly?.data ? { ...weekly.data, date: d } : null);
+    notices = [...results, weekly].map((r) => r?.notice).filter(Boolean);
     recompute();
     setupProgram(reset);
     ready = true;

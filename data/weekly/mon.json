@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "date": "2000-01-03",
+  "id": "weekly-mon",
+  "title": "Chest",
+  "split": "chest",
+  "blocks": [
+    {
+      "id": "bench-press",
+      "exerciseId": "bench-press",
+      "name": "Barbell bench press",
+      "type": "exercise",
+      "weightLb": 165,
+      "sets": 4,
+      "rir": "1–2",
+      "repMin": 6,
+      "repMax": 8,
+      "goal": "Add 5 lb after 4 sets of 8."
+    },
+    {
+      "id": "barbell-incline-bench",
+      "exerciseId": "barbell-incline-bench",
+      "name": "Barbell incline bench",
+      "type": "exercise",
+      "weightLb": null,
+      "sets": 3,
+      "rir": "1–2",
+      "repMin": 8,
+      "repMax": 10,
+      "weightNote": "140–145 lb."
+    },
+    {
+      "id": "hammer-strength-incline-press",
+      "exerciseId": "hammer-strength-incline-press",
+      "name": "Hammer Strength incline press",
+      "type": "exercise",
+      "weightLb": 80,
+      "sets": 3,
+      "rir": "1–2",
+      "repMin": 8,
+      "repMax": 10,
+      "weightNote": "80 lb per side."
+    },
+    {
+      "id": "machine-chest-press",
+      "exerciseId": "machine-chest-press",
+      "name": "Machine chest press",
+      "type": "exercise",
+      "weightLb": 130,
+      "sets": 3,
+      "rir": "1–2",
+      "repMin": 10,
+      "repMax": 12
+    },
+    {
+      "id": "underhand-cable-fly",
+      "exerciseId": "underhand-cable-fly",
+      "name": "Underhand cable fly",
+      "type": "exercise",
+      "weightLb": 20,
+      "sets": 3,
+      "rir": "1–2",
+      "repMin": 12,
+      "repMax": 15
+    },
+    {
+      "id": "machine-pec-fly",
+      "exerciseId": "machine-pec-fly",
+      "name": "Machine pec fly",
+      "type": "exercise",
+      "weightLb": 85,
+      "sets": 3,
+      "rir": "1–2",
+      "repMin": 12,
+      "repMax": 15
+    }
+  ],
+  "abs": {
+    "items": []
+  },
+  "estimatedMinutes": 45,
+  "coachNote": "Train at RIR 1–2. Optional abs finisher.",
+  "progressionRule": "Stay at the same weight until all prescribed sets reach the top of the rep range. Then add weight."
+}
