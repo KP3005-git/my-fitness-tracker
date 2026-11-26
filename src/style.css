@@ -723,29 +723,24 @@ details {
 .set-index.done { color: var(--accent); }
 .set-index.done::after { opacity: 1; transform: rotate(45deg) scale(1); }
 .set-row:has(.set-index.done) input { border-color: #839fa86b; }
-.motto-wall {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 14px;
-  padding: 10px clamp(18px, 4vw, 52px);
-  margin: 0 0 15px;
-  min-height: 80px;
-  border: 1px solid #52627b78;
-  border-radius: 20px;
-  background: #11151b url(../assets/training/neon-wall.webp) center 54% / cover;
+/* The fixed neon mark sits behind every route and scrolls beneath the glass panels. */
+body { isolation: isolate; background: radial-gradient(ellipse at center, #091424, #010204 74%) fixed; }
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: url(../assets/lifter-outline.svg) center 55% / min(64vw, 56vh, 510px) auto no-repeat;
+  filter: drop-shadow(0 0 5px #71aaff);
+  opacity: .32;
 }
-.motto-wall p {
-  margin: 0;
-  color: #f4f8ff;
-  font: 700 clamp(1.35rem, 3vw, 2.55rem)/1.05 var(--display);
-  letter-spacing: .015em;
-  text-shadow: 0 0 3px #a7c9ff, 0 0 13px #5187dbaa;
-}
-.motto-wall img {
-  width: clamp(48px, 7vw, 76px);
-  height: auto;
-  filter: drop-shadow(0 0 2px #bfe7ff) drop-shadow(0 0 8px #648fee);
+.brand-copy { display: grid; gap: 3px; line-height: 1.1; }
+.brand-copy small {
+  color: #b6ccee;
+  font-size: .68rem;
+  font-weight: 550;
+  letter-spacing: .045em;
 }
 .hero.training-photo {
   background: linear-gradient(90deg, #080c16ed, #090c1680 44%, transparent 80%),
@@ -961,7 +956,8 @@ textarea {
   margin-top: 18px;
 }
 .target-load {
-  font: 700 3.4rem var(--display);
+  overflow-wrap: anywhere;
+  font: 700 clamp(2rem, 5vw, 3.4rem) var(--display);
   color: var(--accent);
   margin-top: 16px;
 }
@@ -1412,7 +1408,7 @@ body:has(#timer:not([hidden])) {
   --control-shadow: 0 3px 12px #05071140;
   --surface-edge: #c4d0ff30;
   --surface: radial-gradient(ellipse at 12% 0%, #ccd3e420, transparent 74%),
-    linear-gradient(155deg, #282a30f2, #141518ec 76%);
+    linear-gradient(155deg, #282a30d6, #141518be 76%);
   --royal-glass: linear-gradient(155deg, #3b61d4, #3157cd 49%, #2444a7);
 }
 .appbar {
