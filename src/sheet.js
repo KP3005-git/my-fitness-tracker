@@ -120,7 +120,7 @@ function workouts(rows, catalog) {
       const item = {id:r['Item ID'] || (type==='exercise' ? id : r['Exercise ID'] || exerciseId(r.Exercise,catalog)),
         exerciseId:r['Exercise ID'] || exerciseId(r.Exercise,catalog),name:r.Exercise,
         sets:num(r.Sets),repMin:num(r['Rep Min']),repMax:num(r['Rep Max']),weightLb:num(r['Weight lb'])};
-      for (const [key,col] of [['weightNote','Weight Note'],['laterality','Laterality'],['rir','RIR'],['cues','Cues'],['swap','Swap'],['lastSession','Last Session'],['goal','Goal']])
+      for (const [key,col] of [['weightNote','Weight Note'],['laterality','Laterality'],['rir','RIR'],['cues','Cues'],['swap','Swap'],['lastSession','Last Session'],['goal','Goal'],['demo','Demo']])
         if (r[col]) item[key] = r[col];
       const restSec = num(r['Rest Sec']);
       if (type === 'exercise') {

@@ -1,0 +1,147 @@
+{
+  "deadlift": {
+    "src": "demos/illustrations/deadlift.gif",
+    "credit": "Bryl Lim (Workout Guide) and Everkinetic.",
+    "license": "CC BY-SA 4.0"
+  },
+  "lat-pull-down": {
+    "src": "demos/illustrations/lat-pulldown.gif",
+    "credit": "Bryl Lim (Workout Guide) and Everkinetic.",
+    "license": "CC BY-SA 4.0"
+  },
+  "leg-extension": {
+    "src": "demos/library/leg-extension.gif",
+    "credit": "Free Exercise DB contributors",
+    "license": "Unlicense"
+  },
+  "bench-press": {
+    "src": "demos/illustrations/bench-press.gif",
+    "credit": "Bryl Lim (Workout Guide) and Everkinetic.",
+    "license": "CC BY-SA 4.0"
+  },
+  "seated-cable-row": {
+    "src": "demos/illustrations/seated-row.gif",
+    "credit": "Bryl Lim (Workout Guide) and Everkinetic.",
+    "license": "CC BY-SA 4.0"
+  },
+  "straight-arm-lat-pull-down": {
+    "src": "demos/illustrations/straight-arm-pulldown.gif",
+    "credit": "Bryl Lim (Workout Guide) and Everkinetic.",
+    "license": "CC BY-SA 4.0"
+  },
+  "hanging-knee-raise": {
+    "src": "demos/illustrations/hanging-knee-raise.gif",
+    "credit": "Bryl Lim (Workout Guide).",
+    "license": "CC BY-SA 4.0"
+  },
+  "cable-crunch": {
+    "src": "demos/illustrations/cable-crunch.gif",
+    "credit": "Bryl Lim (Workout Guide) and Everkinetic.",
+    "license": "CC BY-SA 4.0"
+  },
+  "barbell-incline-bench": {
+    "src": "demos/illustrations/incline-bench-press.gif",
+    "credit": "Bryl Lim (Workout Guide) and Everkinetic.",
+    "license": "CC BY-SA 4.0"
+  },
+  "hammer-strength-incline-press": {
+    "src": "demos/library/hammer-strength-incline-press.gif",
+    "credit": "Free Exercise DB contributors",
+    "license": "Unlicense"
+  },
+  "machine-chest-press": {
+    "src": "demos/illustrations/machine-chest-press.gif",
+    "credit": "Bryl Lim (Workout Guide) and Everkinetic.",
+    "license": "CC BY-SA 4.0"
+  },
+  "underhand-cable-fly": {
+    "src": "demos/library/underhand-cable-fly.gif",
+    "credit": "Free Exercise DB contributors",
+    "license": "Unlicense"
+  },
+  "machine-pec-fly": {
+    "src": "demos/illustrations/pec-deck.gif",
+    "credit": "Bryl Lim (Workout Guide).",
+    "license": "CC BY-SA 4.0"
+  },
+  "face-pull": {
+    "src": "demos/illustrations/face-pull.gif",
+    "credit": "Bryl Lim (Workout Guide).",
+    "license": "CC BY-SA 4.0"
+  },
+  "belt-squat": {
+    "src": "demos/illustrations/belt-squat.gif",
+    "credit": "Bryl Lim (Workout Guide).",
+    "license": "CC BY-SA 4.0"
+  },
+  "smith-machine-rdl": {
+    "src": "demos/illustrations/smith-machine-romanian-deadlift.gif",
+    "credit": "Bryl Lim (Workout Guide).",
+    "license": "CC BY-SA 4.0"
+  },
+  "leg-curl": {
+    "src": "demos/illustrations/leg-curl.gif",
+    "credit": "Bryl Lim (Workout Guide) and Everkinetic.",
+    "license": "CC BY-SA 4.0"
+  },
+  "standing-calf-raise": {
+    "src": "demos/illustrations/standing-calf-raise.gif",
+    "credit": "Bryl Lim (Workout Guide) and Everkinetic.",
+    "license": "CC BY-SA 4.0"
+  },
+  "seated-barbell-shoulder-press": {
+    "src": "demos/library/seated-barbell-shoulder-press.gif",
+    "credit": "Free Exercise DB contributors",
+    "license": "Unlicense"
+  },
+  "iso-lateral-shoulder-press": {
+    "src": "demos/library/iso-lateral-shoulder-press.gif",
+    "credit": "Free Exercise DB contributors",
+    "license": "Unlicense"
+  },
+  "dumbbell-lateral-raise": {
+    "src": "demos/illustrations/lateral-raise.gif",
+    "credit": "Bryl Lim (Workout Guide) and Everkinetic.",
+    "license": "CC BY-SA 4.0"
+  },
+  "machine-curl": {
+    "src": "demos/library/machine-curl.gif",
+    "credit": "Free Exercise DB contributors",
+    "license": "Unlicense"
+  },
+  "standing-ez-bar-curl": {
+    "src": "demos/illustrations/ez-bar-curl.gif",
+    "credit": "Bryl Lim (Workout Guide) and Everkinetic.",
+    "license": "CC BY-SA 4.0"
+  },
+  "seated-concentration-curl": {
+    "src": "demos/illustrations/concentration-curl.gif",
+    "credit": "Bryl Lim (Workout Guide) and Everkinetic.",
+    "license": "CC BY-SA 4.0"
+  },
+  "dumbbell-front-raise": {
+    "src": "demos/library/dumbbell-front-raise.gif",
+    "credit": "Free Exercise DB contributors",
+    "license": "Unlicense"
+  },
+  "rear-delt-fly": {
+    "src": "demos/library/rear-delt-fly.gif",
+    "credit": "Free Exercise DB contributors",
+    "license": "Unlicense"
+  },
+  "dumbbell-shrug": {
+    "src": "demos/library/dumbbell-shrug.gif",
+    "credit": "Free Exercise DB contributors",
+    "license": "Unlicense"
+  },
+  "seated-dumbbell-lateral-raise": {
+    "src": "demos/library/seated-dumbbell-lateral-raise.gif",
+    "credit": "Free Exercise DB contributors",
+    "license": "Unlicense"
+  },
+  "chest-supported-dumbbell-row": {
+    "src": "demos/library/chest-supported-dumbbell-row.gif",
+    "credit": "Free Exercise DB contributors",
+    "license": "Unlicense"
+  }
+}

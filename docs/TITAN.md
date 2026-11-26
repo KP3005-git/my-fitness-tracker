@@ -9,8 +9,10 @@ For anonymous access, open the workbook, choose **Share → General access → A
 **Workouts header row** (one exercise per row):
 
 ```text
-Date | Title | Order | Block ID | Block Type | Rounds | Exercise | Exercise ID | Item ID | Sets | Rep Min | Rep Max | Weight lb | Weight Note | Rest Sec | RIR | Laterality | Cues | Swap | Warm-up | Warm-up Min | Abs | Coach Note | Split | Minutes | Progression Rule | Last Session | Goal
+Date | Title | Order | Block ID | Block Type | Rounds | Exercise | Exercise ID | Item ID | Sets | Rep Min | Rep Max | Weight lb | Weight Note | Rest Sec | RIR | Laterality | Cues | Swap | Warm-up | Warm-up Min | Abs | Coach Note | Split | Minutes | Progression Rule | Last Session | Goal | Demo
 ```
+
+Add the optional **Demo** header immediately after Goal. Set it to a mapped exercise ID, a local image path such as `demos/library/leg-extension.gif`, or a full HTTPS image/GIF URL. Leave it blank for automatic matching. The [per-exercise credits](../demos/CREDITS.md) list the bundled assets.
 
 Use ISO dates and a unique numeric Order per date. For each standalone lift use a unique Block ID and Block Type `exercise`. For a superset or circuit, repeat the Block ID, Block Type, Rounds and Rest Sec across its rows, and give each item a distinct Item ID. Leave unknown loads blank. Exercise ID refers to the catalog. Put shared day fields (Title, Split, Minutes, Warm-up, Warm-up Min, Coach Note, Progression Rule and Abs) on the first row. Abs accepts a v1 JSON object with rounds and items. The [complete example rows](workouts-example.csv) include a straight set, a two-exercise superset, and an abs block.
 

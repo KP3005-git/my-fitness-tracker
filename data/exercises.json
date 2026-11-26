@@ -65,15 +65,14 @@
     "leg-extension": {
       "id": "leg-extension",
       "name": "Leg extension",
-      "demo": "demos/illustrations/leg-extension.gif",
-      "license": "CC BY-SA 4.0",
-      "attribution": "Bryl Lim (Workout Guide) and Everkinetic.",
+      "demo": "demos/library/leg-extension.gif",
+      "license": "Unlicense",
+      "attribution": "Free Exercise DB contributors",
       "aliases": [
         "leg extension"
       ],
       "primaryMuscle": "Legs",
-      "laterality": "unilateral",
-      "demoLabel": "Leg extension with both legs"
+      "laterality": "unilateral"
     },
     "bench-press": {
       "id": "bench-press",
@@ -145,10 +144,9 @@
     "hammer-strength-incline-press": {
       "id": "hammer-strength-incline-press",
       "name": "Hammer Strength incline press",
-      "demo": "demos/illustrations/machine-chest-press.gif",
-      "license": "CC BY-SA 4.0",
-      "attribution": "Bryl Lim (Workout Guide) and Everkinetic.",
-      "demoLabel": "Machine chest press (different angle)"
+      "demo": "demos/library/hammer-strength-incline-press.gif",
+      "license": "Unlicense",
+      "attribution": "Free Exercise DB contributors"
     },
     "machine-chest-press": {
       "id": "machine-chest-press",
@@ -160,10 +158,9 @@
     "underhand-cable-fly": {
       "id": "underhand-cable-fly",
       "name": "Underhand cable fly",
-      "demo": "demos/illustrations/cable-fly.gif",
-      "license": "CC BY-SA 4.0",
-      "attribution": "Bryl Lim (Workout Guide) and Everkinetic.",
-      "demoLabel": "Cable fly (standard grip)"
+      "demo": "demos/library/underhand-cable-fly.gif",
+      "license": "Unlicense",
+      "attribution": "Free Exercise DB contributors"
     },
     "machine-pec-fly": {
       "id": "machine-pec-fly",
@@ -174,11 +171,7 @@
     },
     "single-arm-hammer-strength-row": {
       "id": "single-arm-hammer-strength-row",
-      "name": "Single-arm Hammer Strength row",
-      "demo": "demos/illustrations/single-arm-cable-row.gif",
-      "license": "CC BY-SA 4.0",
-      "attribution": "Bryl Lim (Workout Guide).",
-      "demoLabel": "Single-arm cable row (different equipment)"
+      "name": "Single-arm Hammer Strength row"
     },
     "face-pull": {
       "id": "face-pull",
@@ -218,18 +211,16 @@
     "seated-barbell-shoulder-press": {
       "id": "seated-barbell-shoulder-press",
       "name": "Seated barbell shoulder press",
-      "demo": "demos/illustrations/overhead-press.gif",
-      "license": "CC BY-SA 4.0",
-      "attribution": "Bryl Lim (Workout Guide).",
-      "demoLabel": "Standing barbell overhead press"
+      "demo": "demos/library/seated-barbell-shoulder-press.gif",
+      "license": "Unlicense",
+      "attribution": "Free Exercise DB contributors"
     },
     "iso-lateral-shoulder-press": {
       "id": "iso-lateral-shoulder-press",
       "name": "Iso-lateral shoulder press",
-      "demo": "demos/illustrations/machine-shoulder-press.gif",
-      "license": "CC BY-SA 4.0",
-      "attribution": "Bryl Lim (Workout Guide).",
-      "demoLabel": "Machine shoulder press (different machine)"
+      "demo": "demos/library/iso-lateral-shoulder-press.gif",
+      "license": "Unlicense",
+      "attribution": "Free Exercise DB contributors"
     },
     "dumbbell-lateral-raise": {
       "id": "dumbbell-lateral-raise",
@@ -241,10 +232,9 @@
     "machine-curl": {
       "id": "machine-curl",
       "name": "Machine curl",
-      "demo": "demos/illustrations/preacher-curl.gif",
-      "license": "CC BY-SA 4.0",
-      "attribution": "Bryl Lim (Workout Guide) and Everkinetic.",
-      "demoLabel": "Preacher curl (different equipment)"
+      "demo": "demos/library/machine-curl.gif",
+      "license": "Unlicense",
+      "attribution": "Free Exercise DB contributors"
     },
     "standing-ez-bar-curl": {
       "id": "standing-ez-bar-curl",
@@ -259,6 +249,78 @@
       "demo": "demos/illustrations/concentration-curl.gif",
       "license": "CC BY-SA 4.0",
       "attribution": "Bryl Lim (Workout Guide) and Everkinetic."
+    },
+    "dumbbell-front-raise": {
+      "id": "dumbbell-front-raise",
+      "name": "Dumbbell front raise",
+      "aliases": [],
+      "demo": "demos/library/dumbbell-front-raise.gif",
+      "license": "Unlicense",
+      "attribution": "Free Exercise DB contributors"
+    },
+    "rear-delt-fly": {
+      "id": "rear-delt-fly",
+      "name": "Seated rear delt fly",
+      "aliases": [
+        "Seated rear delt fly (2 grips)"
+      ],
+      "demo": "demos/library/rear-delt-fly.gif",
+      "license": "Unlicense",
+      "attribution": "Free Exercise DB contributors"
+    },
+    "dumbbell-shrug": {
+      "id": "dumbbell-shrug",
+      "name": "Dumbbell shrug",
+      "aliases": [],
+      "demo": "demos/library/dumbbell-shrug.gif",
+      "license": "Unlicense",
+      "attribution": "Free Exercise DB contributors"
+    },
+    "lateral-raise-partials": {
+      "id": "lateral-raise-partials",
+      "name": "Lateral raise partials",
+      "aliases": []
+    },
+    "seated-dumbbell-lateral-raise": {
+      "id": "seated-dumbbell-lateral-raise",
+      "name": "Seated dumbbell lateral raise",
+      "aliases": [
+        "Seated straight-arm DB lateral raise"
+      ],
+      "demo": "demos/library/seated-dumbbell-lateral-raise.gif",
+      "license": "Unlicense",
+      "attribution": "Free Exercise DB contributors"
+    },
+    "chest-supported-dumbbell-row": {
+      "id": "chest-supported-dumbbell-row",
+      "name": "Chest-supported dumbbell row",
+      "aliases": [
+        "Chest-supported DB row"
+      ],
+      "demo": "demos/library/chest-supported-dumbbell-row.gif",
+      "license": "Unlicense",
+      "attribution": "Free Exercise DB contributors"
+    },
+    "seated-dumbbell-front-raise": {
+      "id": "seated-dumbbell-front-raise",
+      "name": "Seated dumbbell front raise",
+      "aliases": [
+        "Seated DB front raise"
+      ]
+    },
+    "seated-dumbbell-shrug": {
+      "id": "seated-dumbbell-shrug",
+      "name": "Seated dumbbell shrug",
+      "aliases": [
+        "Seated DB shrugs"
+      ]
+    },
+    "bent-arm-lateral-raise": {
+      "id": "bent-arm-lateral-raise",
+      "name": "Bent-arm lateral raise",
+      "aliases": [
+        "Bent-arm (90 degree) lateral raise"
+      ]
     }
   }
 }

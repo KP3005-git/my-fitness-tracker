@@ -19,7 +19,8 @@ import {
   csvText,
 } from './model.js';
 import { fieldKey, save, openStore, readSessions, fetchFeed } from './storage.js';
-import { demoFiles } from './demo-files.js';
+import { movementFor } from './movement.js';
+import { demoFiles, demoMap } from './demo-files.js';
 import { icon } from './icons.js';
 import { sheetFeed } from './sheet.js';
 import { trainingPhoto } from './training-photo.js';
@@ -64,8 +65,7 @@ let activeTimer = null,
   audioContext,
   tick,
   toastTimeout;
-const knownDemos = new Set(demoFiles),
-  seenDemos = new Set();
+const knownDemos = new Set(demoFiles);
 const route = () =>
   ['history', 'targets', 'attribution'].includes(location.hash.slice(1)) ? location.hash.slice(1) : 'today';
 const daySession = (d = date) => sessions?.get(d) || { lifts: new Map(), check: {}, soreness: new Map() };
@@ -247,26 +247,7 @@ function render() {
   if (route() === 'today') updateProgress();
 }
 function demoInfo(ex) {
-  const library = lookup(ex, feed.exercises);
-  const src = [
-    ex.demo,
-    library.demo,
-    'demos/illustrations/' + ex.exerciseId + '.gif',
-    'demos/video/' + ex.exerciseId + '.gif',
-  ].find((p) => knownDemos.has(p) && /^demos\/(illustrations|video)\//.test(p));
-  const fallback =
-    ex.laterality === 'unilateral' ? 'demos/placeholders/dumbbell.gif' : 'demos/placeholders/plates.gif';
-  if (src) seenDemos.add(src);
-  return {
-    src: src || fallback,
-    label: src === library.demo ? library.demoLabel : null,
-    fallback,
-    caption: src
-      ? [library.attribution || ex.attribution, library.license || ex.license]
-          .filter(Boolean)
-          .join(' · ') || 'See demonstration attribution.'
-      : 'Equipment placeholder · Demo pending.',
-  };
+  return movementFor(ex, feed.exercises, demoMap, knownDemos);
 }
 const dateButton = () =>
   button(
@@ -527,9 +508,10 @@ function exerciseCard(ex, i) {
     '</div><div class="logger"><div class="logger-head"><div><h3>Set log</h3><span class="save-status" data-save="' +
     i +
     '"></span></div>' +
-    (movement.src !== movement.fallback
-      ? button('demo', 'Movement', 'play', 'secondary movement-btn', 'data-i="' + i + '" aria-label="View movement for ' + esc(ex.name) + '"')
-      : '') +
+    '<button type="button" class="secondary movement-btn" data-action="demo" data-i="' + i +
+      '" aria-label="View movement for ' + esc(ex.name) + '"><img loading="lazy" decoding="async" alt="" referrerpolicy="no-referrer" src="' +
+      esc(movement.src) + '" data-fallback="' + movement.fallback + '"><span>' +
+      (movement.src === movement.fallback ? 'Demo pending' : 'Movement') + '</span></button>' +
     '</div><div class="set-labels' +
     gridClass +
     '"><span>Set</span><span>Load (lb)</span>' +
@@ -891,7 +873,7 @@ function targetsView() {
 function creditsView() {
   return (
     heading('Attribution') +
-    '<section class="panel credits"><h2>Exercise illustrations</h2><p>Bryl Lim created the workout-guide illustrations. Some first frames use work by Everkinetic. The app resizes the source poses and combines them into looping illustrations. These adaptations remain under Creative Commons Attribution-ShareAlike 4.0 International.</p><p><a href="https://github.com/bryllim/workout-guide">Bryl Lim · workout-guide</a> · <a href="https://github.com/everkinetic/data">Everkinetic</a> · <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a></p><h2>Gym clips</h2><p>The optional video library uses GymPlan clips from namnq’s workout-free-videos v2.0.0, released under CC0 1.0 Universal.</p><p><a href="https://github.com/namnq/workout-free-videos">Clip source</a> · <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0 1.0</a></p><h2>Starter artwork</h2><p>The animated equipment placeholders are original CC0 illustrations. Barlow Condensed by Jeremy Tribby is distributed under the SIL Open Font License.</p><p><a href="./demos/ATTRIBUTION.md">Demo credits</a> · <a href="./demos/licenses/CC-BY-SA-4.0.txt">BY-SA license</a> · <a href="./demos/licenses/CC0-1.0.txt">CC0 dedication</a> · <a href="./assets/fonts/OFL.txt">Font license</a></p></section>'
+    '<section class="panel credits"><h2>Exercise illustrations</h2><p>Bryl Lim created the workout-guide illustrations. Some first frames use work by Everkinetic. The app resizes the source poses and combines them into looping illustrations. These adaptations remain under Creative Commons Attribution-ShareAlike 4.0 International.</p><p><a href="https://github.com/bryllim/workout-guide">Bryl Lim · workout-guide</a> · <a href="https://github.com/everkinetic/data">Everkinetic</a> · <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a></p><h2>Gym clips</h2><p>The optional video library uses GymPlan clips from namnq’s workout-free-videos v2.0.0, released under CC0 1.0 Universal.</p><p><a href="https://github.com/namnq/workout-free-videos">Clip source</a> · <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0 1.0</a></p><h2>Starter artwork</h2><p>The animated equipment placeholders are original CC0 illustrations. Barlow Condensed by Jeremy Tribby is distributed under the SIL Open Font License.</p><p><a href="./demos/CREDITS.md">Per-exercise demo credits</a> · <a href="./demos/licenses/CC-BY-SA-4.0.txt">BY-SA license</a> · <a href="./demos/licenses/CC0-1.0.txt">CC0 dedication</a> · <a href="./assets/fonts/OFL.txt">Font license</a></p></section>'
   );
 }
 function dialog(name, body) {
@@ -970,15 +952,14 @@ function demoDialog(ex) {
   const d = demoInfo(ex);
   dialog(
     ex.name || ex.exerciseId,
-    (d.label ? '<p class="demo-variant">Related movement: ' + esc(d.label) + '</p>' : '') +
-    '<img class="enlarged" src="./' +
+    '<img class="enlarged" referrerpolicy="no-referrer" src="' +
       esc(d.src) +
       '" data-fallback="' +
       d.fallback +
       '" alt="' +
       esc(
         (d.src === d.fallback ? 'Equipment placeholder for ' : 'Demonstration of ') +
-          (d.label || ex.name || ex.exerciseId),
+          (ex.name || ex.exerciseId),
       ) +
       '"><p class="muted demo-caption">' +
       esc(d.caption) +
@@ -1365,7 +1346,6 @@ async function init() {
       await navigator.serviceWorker.register('./sw.js');
       await navigator.serviceWorker.ready;
       setConnection();
-      for (const p of seenDemos) fetch('./' + p).catch(() => {});
     } catch {
       deviceNotice = 'Offline installation is unavailable in this browser.';
       displayBanners();

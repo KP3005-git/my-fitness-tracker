@@ -1752,3 +1752,6 @@ dialog {
 }
 @media (prefers-reduced-motion: reduce) { .appbar nav { transition: none; } }
 .sheet-status { display: block; color: var(--muted); font-size: .75rem; margin: 0 0 .6rem; }
+
+.movement-btn img { width: 64px; height: 48px; object-fit: contain; border-radius: 6px; }
+.movement-btn { flex-wrap: wrap; }

@@ -163,6 +163,7 @@ export function blocksFor(workout, catalog) {
           ...ref,
           ...ex,
           key,
+          demoOverride: ex.demo,
           exerciseId: ref.id,
           name: ex.name || ref.name || ref.id,
           sets: ex.sets ?? block.rounds ?? null,

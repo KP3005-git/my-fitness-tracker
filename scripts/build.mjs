@@ -33,10 +33,11 @@ async function filesIn(folder) {
 const files = (await filesIn(dist))
   .map((file) => path.relative(dist, file).split(path.sep).join('/'))
   .sort();
-const demos = files.filter((name) => /^demos\/(illustrations|video)\/.*\.gif$/i.test(name));
+const demos = files.filter((name) => /^demos\/.*\.(gif|webp|png|jpe?g|avif)$/i.test(name));
 await writeFile(
   path.join(dist, 'src/demo-files.js'),
-  'export const demoFiles = ' + JSON.stringify(demos) + ';\n',
+  'export const demoFiles = ' + JSON.stringify(demos) + ';\nexport const demoMap = ' +
+    await readFile(path.join(root, 'data/demos.json'), 'utf8') + ';\n',
 );
 const shell = files.filter((name) => (!name.startsWith('data/') || name.startsWith('data/weekly/')) && !demos.includes(name));
 const template = await readFile(path.join(root, 'scripts/sw-template.js'), 'utf8');

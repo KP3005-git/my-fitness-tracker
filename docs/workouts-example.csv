@@ -1,4 +1,4 @@
-Date,Title,Order,Block ID,Block Type,Rounds,Exercise,Exercise ID,Item ID,Sets,Rep Min,Rep Max,Weight lb,Weight Note,Rest Sec,RIR,Laterality,Cues,Swap,Warm-up,Warm-up Min,Abs,Coach Note,Split,Minutes,Progression Rule,Last Session,Goal
-2030-04-02,Pull day,1,pull,exercise,,Deadlift,deadlift,pull,3,6,8,95,,120,1-2,bilateral,Reset each rep,,Easy row,5,"{""rounds"":2,""items"":[{""name"":""Plank"",""reps"":""30 sec""}]}",Log each set,back,40,Reach 3x8 before increasing
+Date,Title,Order,Block ID,Block Type,Rounds,Exercise,Exercise ID,Item ID,Sets,Rep Min,Rep Max,Weight lb,Weight Note,Rest Sec,RIR,Laterality,Cues,Swap,Warm-up,Warm-up Min,Abs,Coach Note,Split,Minutes,Progression Rule,Last Session,Goal,Demo
+2030-04-02,Pull day,1,pull,exercise,,Deadlift,deadlift,pull,3,6,8,95,,120,1-2,bilateral,Reset each rep,,Easy row,5,"{""rounds"":2,""items"":[{""name"":""Plank"",""reps"":""30 sec""}]}",Log each set,back,40,Reach 3x8 before increasing,,,deadlift
 2030-04-02,,2,pair,superset,3,Seated cable row,seated-cable-row,row,,8,10,,,60
 2030-04-02,,3,pair,superset,3,Lat pulldown,lat-pull-down,lat,,8,10,,,60

@@ -39,14 +39,14 @@ self.addEventListener('fetch', (event) => {
         );
       })(),
     );
-  } else if (/^demos\/(illustrations|video)\/.*\.gif$/i.test(relative)) {
+  } else if (/^demos\/.*\.(gif|webp|png|jpe?g|avif)$/i.test(relative)) {
     event.respondWith(
       (async () => {
         const cache = await caches.open(demos);
         const hit = await cache.match(req);
         if (hit) return hit;
         const response = await fetch(req);
-        if (response.ok && response.headers.get('Content-Type')?.includes('image/gif'))
+        if (response.ok && response.headers.get('Content-Type')?.startsWith('image/'))
           await cache.put(req, response.clone());
         return response;
       })(),
