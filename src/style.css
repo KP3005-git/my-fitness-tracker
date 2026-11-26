@@ -723,6 +723,40 @@ details {
 .set-index.done { color: var(--accent); }
 .set-index.done::after { opacity: 1; transform: rotate(45deg) scale(1); }
 .set-row:has(.set-index.done) input { border-color: #839fa86b; }
+.motto-wall {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 10px clamp(18px, 4vw, 52px);
+  margin: 0 0 15px;
+  min-height: 80px;
+  border: 1px solid #52627b78;
+  border-radius: 20px;
+  background: #11151b url(../assets/training/neon-wall.webp) center 54% / cover;
+}
+.motto-wall p {
+  margin: 0;
+  color: #f4f8ff;
+  font: 700 clamp(1.35rem, 3vw, 2.55rem)/1.05 var(--display);
+  letter-spacing: .015em;
+  text-shadow: 0 0 3px #a7c9ff, 0 0 13px #5187dbaa;
+}
+.motto-wall img {
+  width: clamp(48px, 7vw, 76px);
+  height: auto;
+  filter: drop-shadow(0 0 2px #bfe7ff) drop-shadow(0 0 8px #648fee);
+}
+.hero.training-photo {
+  background: linear-gradient(90deg, #080c16ed, #090c1680 44%, transparent 80%),
+    var(--photo) 65% 18% / cover no-repeat;
+  min-height: clamp(155px, 21vw, 278px);
+}
+.training-line { color: #d5ddeb; margin: 9px 0 0; font-size: .91rem; line-height: 1.4; }
+.hero .training-line { max-width: 24ch; }
+@media (min-width: 700px) {
+  .hero .training-line { max-width: none; }
+}
 
 input:not([type='checkbox']),
 textarea,

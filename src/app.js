@@ -21,6 +21,7 @@ import {
 import { fieldKey, save, openStore, readSessions, fetchFeed } from './storage.js';
 import { demoFiles } from './demo-files.js';
 import { icon } from './icons.js';
+import { trainingPhoto } from './training-photo.js';
 
 const $ = (s) => document.querySelector(s);
 const esc = (v) =>
@@ -217,8 +218,9 @@ const dateButton = () =>
   ).replace('</button>', icon('down') + '</button>');
 function workoutView() {
   const heading = program?.title || (lifts.length ? 'Saved workout' : 'Rest day');
+  const photo = trainingPhoto(program, lifts);
   const hero =
-    '<section class="hero"><div class="hero-body">' +
+    '<section class="hero training-photo" style="--photo:url(' + new URL('../assets/training/' + photo + '.webp', import.meta.url).href + ')"><div class="hero-body">' +
     dateButton() +
     '<h1>' +
     esc(heading) +
@@ -232,7 +234,9 @@ function workoutView() {
     lifts.length +
     ' exercise' +
     (lifts.length === 1 ? '' : 's') +
-    '</span></div></div></section>';
+    '</span></div><p class="training-line">' +
+    (photo === 'neon-wall' ? 'Give recovery the same attention as a working set.' : 'Make this set one you’re proud to log.') +
+    '</p></div></section>';
   const plan =
     '<section class="plan"><div class="section-head"><h2>Workout plan</h2></div>' +
     (!program
@@ -596,8 +600,9 @@ function updateProgress() {
   chip.style.setProperty('--completion', p + '%');
 }
 
-function heading(name, action = '') {
-  return '<div class="page-head"><h1>' + esc(name) + '</h1>' + action + '</div>';
+function heading(name, action = '', line = '') {
+  return '<div class="page-head"><div><h1>' + esc(name) + '</h1>' +
+    (line ? '<p class="training-line">' + esc(line) + '</p>' : '') + '</div>' + action + '</div>';
 }
 function flags(e) {
   const labels = [
@@ -628,7 +633,8 @@ function historyView() {
       .join('') +
     '</select></label>';
   return (
-    heading('Lift history', rows.length ? button('export-history', 'Export history', 'share', 'primary') : '') +
+    heading('Lift history', rows.length ? button('export-history', 'Export history', 'share', 'primary') : '',
+      'Look back at what used to feel heavy.') +
     (!rows.length
       ? '<section class="panel empty"><h2>No logged lifts yet</h2><p>Your first logged set will appear here.</p>' +
         button('open-today', 'Open today’s workout', 'today', 'primary') + '</section>'
@@ -780,7 +786,7 @@ function drawCharts() {
 function targetsView() {
   const targets = feed.targets?.targets || [];
   return (
-    heading('Next targets') +
+    heading('Next targets', '', 'One more clean rep is progress.') +
     (feed.targets?.updated && validDate(feed.targets.updated)
       ? '<p class="muted">Updated ' +
         esc(showDate(feed.targets.updated, { month: 'long', day: 'numeric', year: 'numeric' })) +
