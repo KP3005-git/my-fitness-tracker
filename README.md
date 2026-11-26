@@ -32,6 +32,8 @@ git push -u origin main
 
 ## How TITAN updates the app
 
+See [TITAN's daily workout contract and import guide](docs/TITAN.md) for the full workout example, CSV import command, and history and target formats.
+
 All committed data files have numeric `schemaVersion: 1`. The files in `data/` include a sample workout, recurring weekly templates, and empty history and target lists. Dates use `YYYY-MM-DD` in America/Indianapolis. Loads are pounds. Use `null` for unknown values.
 
 | File | Contents |

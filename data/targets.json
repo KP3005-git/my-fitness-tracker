@@ -1,4 +1,185 @@
 {
   "schemaVersion": 1,
-  "targets": []
+  "targets": [
+    {
+      "exerciseId": "bench-press",
+      "name": "Barbell bench press",
+      "nextWeightLb": 165,
+      "nextWeightText": "165 lb (45 + 10 + 5 per side)",
+      "targetSets": 4,
+      "targetReps": "6-8",
+      "rule": "Hit 4x8 then add 5 lb"
+    },
+    {
+      "exerciseId": "hammer-strength-incline-press",
+      "name": "Hammer Strength incline press",
+      "nextWeightLb": 80,
+      "nextWeightText": "80 lb per side (45+25+10)",
+      "targetSets": 3,
+      "targetReps": "8-10",
+      "rule": "Hit 3x10 then add"
+    },
+    {
+      "exerciseId": "underhand-cable-fly",
+      "name": "Underhand cable fly",
+      "nextWeightLb": 20,
+      "nextWeightText": "20 lb",
+      "targetSets": 3,
+      "targetReps": "12-15",
+      "rule": "Hit 3x15 then add"
+    },
+    {
+      "exerciseId": "machine-pec-fly",
+      "name": "Machine pec fly",
+      "nextWeightLb": 85,
+      "nextWeightText": "85 lb",
+      "targetSets": 3,
+      "targetReps": "12-15",
+      "rule": "Hit 3x15 then add"
+    },
+    {
+      "exerciseId": "smith-machine-rdl",
+      "name": "Smith machine RDL",
+      "nextWeightLb": 180,
+      "nextWeightText": "180 lb plates",
+      "targetSets": 3,
+      "targetReps": "8-10",
+      "rule": "Hit 3x10 then add 10 lb"
+    },
+    {
+      "exerciseId": "machine-curl",
+      "name": "Machine curl",
+      "nextWeightLb": 120,
+      "nextWeightText": "120 lb",
+      "targetSets": 3,
+      "targetReps": "8-10",
+      "rule": "Hit 3x10 then add"
+    },
+    {
+      "exerciseId": "standing-ez-bar-curl",
+      "name": "Standing EZ-bar curl",
+      "nextWeightLb": 60,
+      "nextWeightText": "60 lb total",
+      "targetSets": 3,
+      "targetReps": "12-15",
+      "rule": "Hit 3x15 then add"
+    },
+    {
+      "exerciseId": "seated-concentration-curl",
+      "name": "Seated concentration curl",
+      "nextWeightLb": 35,
+      "nextWeightText": "35 lb per arm",
+      "targetSets": 3,
+      "targetReps": "8-10",
+      "rule": "Hit 3x10 then add"
+    },
+    {
+      "exerciseId": "lat-pull-down",
+      "name": "Lat pulldown",
+      "nextWeightLb": 130,
+      "nextWeightText": "130 lb",
+      "targetSets": 3,
+      "targetReps": "8-12",
+      "rule": "Hit 3x12 then add"
+    },
+    {
+      "exerciseId": "single-arm-hammer-strength-row",
+      "name": "Single-arm Hammer Strength row",
+      "nextWeightLb": 55,
+      "nextWeightText": "55 lb per arm",
+      "targetSets": 3,
+      "targetReps": "10-12 each arm",
+      "rule": "Hit 3x12 then add"
+    },
+    {
+      "exerciseId": "belt-squat",
+      "name": "Belt squat",
+      "nextWeightLb": 240,
+      "nextWeightText": "240 lb plates (2x45 + 25 + 5 per side)",
+      "targetSets": 4,
+      "targetReps": "8-12",
+      "rule": "Hit 4x12, then add 5 per side"
+    },
+    {
+      "exerciseId": "leg-curl",
+      "name": "Leg curl",
+      "nextWeightLb": 145,
+      "nextWeightText": "145 lb",
+      "targetSets": 3,
+      "targetReps": "10-12",
+      "rule": "Hit 3x12, then move toward 160"
+    },
+    {
+      "exerciseId": "leg-extension",
+      "name": "Single-leg extension",
+      "nextWeightLb": null,
+      "nextWeightText": "Right 60-65 lb, slow 3-sec lowering",
+      "targetSets": 3,
+      "targetReps": "10 right; left 3x6-10",
+      "rule": "Knee clicked at 70 (no pain). Build back to 70 if quiet"
+    },
+    {
+      "exerciseId": "dumbbell-lateral-raise",
+      "name": "Dumbbell lateral raise",
+      "nextWeightLb": 22.5,
+      "nextWeightText": "22.5 lb per dumbbell",
+      "targetSets": 4,
+      "targetReps": "10-12",
+      "rule": "Hit 4x12 then add"
+    },
+    {
+      "exerciseId": "iso-lateral-shoulder-press",
+      "name": "Iso-lateral shoulder press",
+      "nextWeightLb": 55,
+      "nextWeightText": "55 lb per side",
+      "targetSets": 3,
+      "targetReps": "10-12",
+      "rule": "Hit 3x12 then add"
+    },
+    {
+      "exerciseId": "machine-chest-press",
+      "name": "Machine chest press",
+      "nextWeightLb": 130,
+      "nextWeightText": "130 lb",
+      "targetSets": 3,
+      "targetReps": "10-12",
+      "rule": "Hit 3x12 then add"
+    },
+    {
+      "exerciseId": "deadlift",
+      "name": "Barbell deadlift",
+      "nextWeightLb": 245,
+      "nextWeightText": "245 lb",
+      "targetSets": 3,
+      "targetReps": "6-8",
+      "rule": "Hit 3x8, then add 10 lb (235x3x8 done Nov 24)"
+    },
+    {
+      "exerciseId": "seated-barbell-shoulder-press",
+      "name": "Seated barbell shoulder press",
+      "nextWeightLb": 115,
+      "nextWeightText": "115 lb (35 per side + bar)",
+      "targetSets": 3,
+      "targetReps": "8-10",
+      "rule": "Hit 3x10, then add 5 lb per side"
+    },
+    {
+      "exerciseId": "barbell-incline-bench",
+      "name": "Barbell incline bench press",
+      "nextWeightLb": null,
+      "nextWeightText": "140-145 lb",
+      "targetSets": 3,
+      "targetReps": "8-10",
+      "rule": "Hit 3x10, then add 5 lb"
+    },
+    {
+      "exerciseId": "standing-calf-raise",
+      "name": "Standing calf raise",
+      "nextWeightLb": 260,
+      "nextWeightText": "260 lb",
+      "targetSets": 3,
+      "targetReps": "12-15",
+      "rule": "Hit 3x15, then add 20 lb"
+    }
+  ]
 }

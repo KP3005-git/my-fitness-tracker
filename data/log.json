@@ -1,4 +1,740 @@
 {
   "schemaVersion": 1,
-  "entries": []
+  "entries": [
+    {
+      "id": "sheet-82e31866801d1bfd9d16",
+      "date": "2026-10-16",
+      "day": "Arms",
+      "exerciseId": "machine-curl",
+      "exercise": "Machine curl",
+      "weightLb": 110,
+      "weightNote": "lb stack",
+      "sets": 3,
+      "reps": [
+        10,
+        10,
+        10
+      ],
+      "hitTopOfRange": true,
+      "pr": null,
+      "notes": "Baseline"
+    },
+    {
+      "id": "sheet-536e94110cc2e69503d9",
+      "date": "2026-10-16",
+      "day": "Arms",
+      "exerciseId": "standing-ez-bar-curl",
+      "exercise": "Standing EZ-bar curl",
+      "weightLb": 50,
+      "weightNote": "lb total",
+      "sets": 3,
+      "reps": [
+        20,
+        20,
+        20
+      ],
+      "hitTopOfRange": true,
+      "pr": null,
+      "notes": "Baseline"
+    },
+    {
+      "id": "sheet-fe961cf9d02194ee4a31",
+      "date": "2026-10-16",
+      "day": "Arms",
+      "exerciseId": "seated-concentration-curl",
+      "exercise": "Seated concentration curl",
+      "weightLb": 32.5,
+      "weightNote": "lb per arm",
+      "sets": 3,
+      "reps": [
+        10,
+        10,
+        10
+      ],
+      "hitTopOfRange": true,
+      "pr": null,
+      "notes": "Baseline"
+    },
+    {
+      "id": "sheet-0779222f344b62640b3e",
+      "date": "2026-10-19",
+      "day": "Chest",
+      "exerciseId": "bench-press",
+      "exercise": "Barbell bench press",
+      "weightLb": 155,
+      "weightNote": "lb total (45 bar + 55/side)",
+      "sets": 4,
+      "reps": [
+        8,
+        8,
+        7,
+        6
+      ],
+      "hitTopOfRange": false,
+      "pr": null,
+      "notes": ""
+    },
+    {
+      "id": "sheet-7437a61fd7c6aa331d3b",
+      "date": "2026-10-19",
+      "day": "Chest",
+      "exerciseId": "hammer-strength-incline-press",
+      "exercise": "Hammer Strength incline press",
+      "weightLb": 70,
+      "weightNote": "lb per side (45+25)",
+      "sets": 3,
+      "reps": [
+        6,
+        6,
+        8
+      ],
+      "hitTopOfRange": false,
+      "pr": null,
+      "notes": ""
+    },
+    {
+      "id": "sheet-d4d7e97b54bcee474581",
+      "date": "2026-10-19",
+      "day": "Chest",
+      "exerciseId": "machine-pec-fly",
+      "exercise": "Machine pec fly",
+      "weightLb": 70,
+      "weightNote": "lb stack",
+      "sets": null,
+      "reps": [],
+      "hitTopOfRange": null,
+      "pr": null,
+      "notes": "Reps not reported"
+    },
+    {
+      "id": "sheet-8a929990d7aaf6591908",
+      "date": "2026-10-26",
+      "day": "Chest",
+      "exerciseId": "bench-press",
+      "exercise": "Barbell bench press",
+      "weightLb": 155,
+      "weightNote": "lb total",
+      "sets": 4,
+      "reps": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "hitTopOfRange": true,
+      "pr": "yes",
+      "notes": ""
+    },
+    {
+      "id": "sheet-1589f7dcb8597f90e393",
+      "date": "2026-10-26",
+      "day": "Chest",
+      "exerciseId": "hammer-strength-incline-press",
+      "exercise": "Hammer Strength incline press",
+      "weightLb": 70,
+      "weightNote": "lb per side (45+25)",
+      "sets": 3,
+      "reps": [
+        8,
+        8,
+        8
+      ],
+      "hitTopOfRange": false,
+      "pr": "yes",
+      "notes": "Said he could do more weight"
+    },
+    {
+      "id": "sheet-7412d1a075a563c94819",
+      "date": "2026-10-26",
+      "day": "Chest",
+      "exerciseId": "underhand-cable-fly",
+      "exercise": "Underhand (low-to-high) cable fly",
+      "weightLb": 20,
+      "weightNote": "lb",
+      "sets": 3,
+      "reps": [
+        10,
+        10,
+        10
+      ],
+      "hitTopOfRange": false,
+      "pr": null,
+      "notes": ""
+    },
+    {
+      "id": "sheet-6fc96eadc288c0a93f65",
+      "date": "2026-10-26",
+      "day": "Chest",
+      "exerciseId": "machine-pec-fly",
+      "exercise": "Machine pec fly",
+      "weightLb": 85,
+      "weightNote": "lb stack",
+      "sets": 3,
+      "reps": [
+        10,
+        10,
+        10
+      ],
+      "hitTopOfRange": false,
+      "pr": null,
+      "notes": "Up from 70"
+    },
+    {
+      "id": "sheet-e0fc7d5bb8f0e315fa68",
+      "date": "2026-10-27",
+      "day": "Back",
+      "exerciseId": "smith-machine-rdl",
+      "exercise": "Smith machine RDL",
+      "weightLb": 180,
+      "weightNote": "lb plates only (excl. Smith bar)",
+      "sets": 3,
+      "reps": [
+        8,
+        8,
+        8
+      ],
+      "hitTopOfRange": false,
+      "pr": null,
+      "notes": "Baseline"
+    },
+    {
+      "id": "sheet-fd2d9b89ddc00c05f542",
+      "date": "2026-10-27",
+      "day": "Back",
+      "exerciseId": "lat-pull-down",
+      "exercise": "Lat pulldown",
+      "weightLb": 130,
+      "weightNote": "lb stack",
+      "sets": 3,
+      "reps": [
+        10,
+        10,
+        10
+      ],
+      "hitTopOfRange": false,
+      "pr": null,
+      "notes": "Baseline (assumed pulldown)"
+    },
+    {
+      "id": "sheet-08d18e8ec84d22f7f79b",
+      "date": "2026-10-27",
+      "day": "Back",
+      "exerciseId": "single-arm-hammer-strength-row",
+      "exercise": "Single-arm Hammer Strength chest-supported row",
+      "weightLb": 55,
+      "weightNote": "lb plates per arm",
+      "sets": 3,
+      "reps": {
+        "right": [
+          10,
+          10,
+          10
+        ],
+        "left": [
+          10,
+          10,
+          10
+        ]
+      },
+      "hitTopOfRange": false,
+      "pr": null,
+      "notes": "Baseline"
+    },
+    {
+      "id": "sheet-43183e47ba3dec22482d",
+      "date": "2026-10-28",
+      "day": "Legs",
+      "exerciseId": "belt-squat",
+      "exercise": "Belt squat",
+      "weightLb": 230,
+      "weightNote": "lb plates (2x45 + 25 per side)",
+      "sets": 4,
+      "reps": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "hitTopOfRange": false,
+      "pr": null,
+      "notes": "Baseline"
+    },
+    {
+      "id": "sheet-a0f5e2d0611e251cc598",
+      "date": "2026-10-28",
+      "day": "Legs",
+      "exerciseId": "leg-extension",
+      "exercise": "Single-leg extension (RIGHT, post-ACL)",
+      "weightLb": 55,
+      "weightNote": "lb stack",
+      "sets": 3,
+      "reps": {
+        "right": [
+          10,
+          10,
+          10
+        ],
+        "left": []
+      },
+      "hitTopOfRange": null,
+      "pr": null,
+      "notes": "Extra reps on the right on purpose to close the strength gap"
+    },
+    {
+      "id": "sheet-d987f16d7d327399af4b",
+      "date": "2026-10-28",
+      "day": "Legs",
+      "exerciseId": "leg-extension",
+      "exercise": "Single-leg extension (LEFT)",
+      "weightLb": 55,
+      "weightNote": "lb stack",
+      "sets": 3,
+      "reps": {
+        "right": [],
+        "left": [
+          6,
+          6,
+          6
+        ]
+      },
+      "hitTopOfRange": null,
+      "pr": null,
+      "notes": "Baseline"
+    },
+    {
+      "id": "sheet-68c51c59937940c5e371",
+      "date": "2026-10-28",
+      "day": "Legs",
+      "exerciseId": "leg-curl",
+      "exercise": "Leg curl (both legs)",
+      "weightLb": 130,
+      "weightNote": "lb stack",
+      "sets": 3,
+      "reps": [
+        10,
+        10,
+        10
+      ],
+      "hitTopOfRange": false,
+      "pr": null,
+      "notes": "Baseline"
+    },
+    {
+      "id": "sheet-36cc8e6b44b10a199987",
+      "date": "2026-10-29",
+      "day": "Shoulders",
+      "exerciseId": "dumbbell-lateral-raise",
+      "exercise": "Dumbbell lateral raise",
+      "weightLb": 22.5,
+      "weightNote": "lb per dumbbell",
+      "sets": 4,
+      "reps": [
+        10,
+        10,
+        10,
+        10
+      ],
+      "hitTopOfRange": false,
+      "pr": null,
+      "notes": "Baseline"
+    },
+    {
+      "id": "sheet-cc1eb4e99fbd807d91dc",
+      "date": "2026-10-29",
+      "day": "Shoulders",
+      "exerciseId": "iso-lateral-shoulder-press",
+      "exercise": "Iso-lateral shoulder press (machine)",
+      "weightLb": 45,
+      "weightNote": "lb per side (sets 1-2); set 3 at 55/side",
+      "sets": 3,
+      "reps": [
+        12,
+        12,
+        12
+      ],
+      "hitTopOfRange": true,
+      "pr": null,
+      "notes": "Last set +10 lb per side | Reps assumed in source.",
+      "setDetails": [
+        {
+          "set": 1,
+          "weightLb": 45,
+          "reps": 12
+        },
+        {
+          "set": 2,
+          "weightLb": 45,
+          "reps": 12
+        },
+        {
+          "set": 3,
+          "weightLb": 55,
+          "reps": 12
+        }
+      ]
+    },
+    {
+      "id": "sheet-d085f9ebcd3b3deff649",
+      "date": "2026-11-02",
+      "day": "Chest",
+      "exerciseId": "bench-press",
+      "exercise": "Barbell bench press",
+      "weightLb": 165,
+      "weightNote": "45 bar + 45 + 10 + 5 per side",
+      "sets": 4,
+      "reps": [
+        8,
+        8,
+        5,
+        5
+      ],
+      "hitTopOfRange": false,
+      "pr": "yes",
+      "notes": "Heaviest bench logged (plan was 160). Stay at 165 until 4x8."
+    },
+    {
+      "id": "sheet-ce1f96ddca8dc60f4e2a",
+      "date": "2026-11-02",
+      "day": "Chest",
+      "exerciseId": "hammer-strength-incline-press",
+      "exercise": "Hammer Strength incline press",
+      "weightLb": 75,
+      "weightNote": "45 + 25 + 5 per side",
+      "sets": 3,
+      "reps": [
+        10,
+        10,
+        10
+      ],
+      "hitTopOfRange": true,
+      "pr": "yes",
+      "notes": "Top of range on all sets at 75 per side. Next: 80 per side."
+    },
+    {
+      "id": "sheet-d9ead6f02bf0dc8a5d59",
+      "date": "2026-11-02",
+      "day": "Chest",
+      "exerciseId": "machine-chest-press",
+      "exercise": "Machine chest press",
+      "weightLb": 115,
+      "weightNote": "",
+      "sets": 1,
+      "reps": [
+        10
+      ],
+      "hitTopOfRange": null,
+      "pr": null,
+      "notes": "Baseline, first set"
+    },
+    {
+      "id": "sheet-48906a91a45262376cb3",
+      "date": "2026-11-02",
+      "day": "Chest",
+      "exerciseId": "machine-chest-press",
+      "exercise": "Machine chest press",
+      "weightLb": 130,
+      "weightNote": "",
+      "sets": 1,
+      "reps": [
+        10
+      ],
+      "hitTopOfRange": null,
+      "pr": null,
+      "notes": "Baseline, second set. Next: 130 for 3x10-12"
+    },
+    {
+      "id": "sheet-c1f73d3b8d5b5b7083bf",
+      "date": "2026-11-02",
+      "day": "Chest",
+      "exerciseId": "underhand-cable-fly",
+      "exercise": "Underhand cable fly",
+      "weightLb": 20,
+      "weightNote": "",
+      "sets": 3,
+      "reps": [
+        10,
+        10,
+        10
+      ],
+      "hitTopOfRange": false,
+      "pr": null,
+      "notes": "Same as Oct 26. Pec fly machine and abs finisher skipped; finished with sauna."
+    },
+    {
+      "id": "sheet-071d40c7a9119f24a690",
+      "date": "2026-11-03",
+      "day": "Back",
+      "exerciseId": "deadlift",
+      "exercise": "Barbell deadlift (squat rack)",
+      "weightLb": 225,
+      "weightNote": "45 bar + 2x45 per side",
+      "sets": 3,
+      "reps": [
+        8,
+        8,
+        6
+      ],
+      "hitTopOfRange": false,
+      "pr": null,
+      "notes": "Baseline; replaced Smith RDL. Floor pull vs RDL not confirmed."
+    },
+    {
+      "id": "sheet-d25813235109dafb7731",
+      "date": "2026-11-05",
+      "day": "Shoulders",
+      "exerciseId": "seated-barbell-shoulder-press",
+      "exercise": "Seated barbell shoulder press",
+      "weightLb": 115,
+      "weightNote": "35 per side + bar (assumed 45 lb bar)",
+      "sets": 3,
+      "reps": [
+        8,
+        8,
+        8
+      ],
+      "hitTopOfRange": false,
+      "pr": null,
+      "notes": "Replaced the iso-lateral machine press"
+    },
+    {
+      "id": "sheet-87cec218dc443056199d",
+      "date": "2026-11-09",
+      "day": "Chest",
+      "exerciseId": "barbell-incline-bench",
+      "exercise": "Barbell incline bench press",
+      "weightLb": 135,
+      "weightNote": "45 per side + bar (assumed 45 lb bar)",
+      "sets": 3,
+      "reps": [
+        10,
+        10,
+        10
+      ],
+      "hitTopOfRange": true,
+      "pr": null,
+      "notes": "Opened chest day with this"
+    },
+    {
+      "id": "sheet-02fa804049fca4b7a643",
+      "date": "2026-11-10",
+      "day": "Back",
+      "exerciseId": "deadlift",
+      "exercise": "Barbell deadlift",
+      "weightLb": 225,
+      "weightNote": "Two 45s per side + bar",
+      "sets": 3,
+      "reps": [
+        8,
+        8,
+        8
+      ],
+      "hitTopOfRange": true,
+      "pr": "rep",
+      "notes": "Up from 8, 8, 6 on Nov 3. Next: 235"
+    },
+    {
+      "id": "sheet-eb16738862c36b0e5b19",
+      "date": "2026-11-11",
+      "day": "Legs",
+      "exerciseId": "belt-squat",
+      "exercise": "Belt squat",
+      "weightLb": 230,
+      "weightNote": "Plates only: 2x45+25 per side; last set +5 per side (240)",
+      "sets": 4,
+      "reps": [
+        10,
+        10,
+        10,
+        10
+      ],
+      "hitTopOfRange": false,
+      "pr": "rep",
+      "notes": "Up from 4x8 on Oct 28. Reps assumed 10 on all sets from his reply \"10\"",
+      "setDetails": [
+        {
+          "set": 1,
+          "weightLb": 230,
+          "reps": 10
+        },
+        {
+          "set": 2,
+          "weightLb": 230,
+          "reps": 10
+        },
+        {
+          "set": 3,
+          "weightLb": 230,
+          "reps": 10
+        },
+        {
+          "set": 4,
+          "weightLb": 240,
+          "reps": 10
+        }
+      ]
+    },
+    {
+      "id": "sheet-110341635d5fde1b86e2",
+      "date": "2026-11-11",
+      "day": "Legs",
+      "exerciseId": "leg-extension",
+      "exercise": "Single-leg extension",
+      "weightLb": 70,
+      "weightNote": "lb stack",
+      "sets": 3,
+      "reps": [
+        10,
+        10,
+        10
+      ],
+      "hitTopOfRange": null,
+      "pr": "yes",
+      "notes": "Up from 55. Which leg(s) not confirmed. Right knee was clicking at 70, so drop the right to 55-60 next time"
+    },
+    {
+      "id": "sheet-b3f7c4a57adb42d20a9b",
+      "date": "2026-11-11",
+      "day": "Legs",
+      "exerciseId": "leg-curl",
+      "exercise": "Leg curl (both legs)",
+      "weightLb": 130,
+      "weightNote": "lb stack, pyramid",
+      "sets": 3,
+      "reps": [
+        10,
+        10,
+        10
+      ],
+      "hitTopOfRange": null,
+      "pr": "yes",
+      "notes": "Reps assumed 10 each from his reply \"10\". Up from 3x10 at 130",
+      "setDetails": [
+        {
+          "set": 1,
+          "weightLb": 130,
+          "reps": 10
+        },
+        {
+          "set": 2,
+          "weightLb": 145,
+          "reps": 10
+        },
+        {
+          "set": 3,
+          "weightLb": 160,
+          "reps": 10
+        }
+      ]
+    },
+    {
+      "id": "sheet-38ae28012045d98ba65a",
+      "date": "2026-11-11",
+      "day": "Legs",
+      "exerciseId": "standing-calf-raise",
+      "exercise": "Standing calf raise",
+      "weightLb": 240,
+      "weightNote": "lb",
+      "sets": 3,
+      "reps": [
+        20,
+        20,
+        20
+      ],
+      "hitTopOfRange": true,
+      "pr": null,
+      "notes": "Next: 260 for 3x12-15"
+    },
+    {
+      "id": "sheet-b13f76ae7c1f6b5622dc",
+      "date": "2026-11-12",
+      "day": "Shoulders",
+      "exerciseId": "seated-barbell-shoulder-press",
+      "exercise": "Seated barbell shoulder press",
+      "weightLb": 115,
+      "weightNote": "35/side + 45 bar (assumed)",
+      "sets": 3,
+      "reps": [
+        8,
+        8,
+        8
+      ],
+      "hitTopOfRange": false,
+      "pr": null,
+      "notes": "Matched Nov 5. Stay at 115, push for 3x10 then +5/side."
+    },
+    {
+      "id": "sheet-837c8fd1967ed8149d49",
+      "date": "2026-11-16",
+      "day": "Chest",
+      "exerciseId": "bench-press",
+      "exercise": "Barbell bench press",
+      "weightLb": 165,
+      "weightNote": "45 + 10 + 5 per side",
+      "sets": 4,
+      "reps": [
+        8,
+        6,
+        6,
+        6
+      ],
+      "hitTopOfRange": false,
+      "pr": null,
+      "notes": "Same 26 total reps as Nov 2 (8,8,5,5) but every set at 6+. Stay at 165, chase 4x8."
+    },
+    {
+      "id": "sheet-f2f38d979c3f1e1a971f",
+      "date": "2026-11-17",
+      "day": "Back",
+      "exerciseId": "deadlift",
+      "exercise": "Barbell deadlift",
+      "weightLb": 235,
+      "weightNote": "",
+      "sets": 3,
+      "reps": [
+        8,
+        6,
+        6
+      ],
+      "hitTopOfRange": false,
+      "pr": "yes",
+      "notes": "Weight PR (up from 225x3x8). Read 'one set for 8 then rest for 6' as 8, 6, 6. Stay at 235, build to 3x8."
+    },
+    {
+      "id": "sheet-227aebeb206a93c38e7d",
+      "date": "2026-11-23",
+      "day": "Chest",
+      "exerciseId": "bench-press",
+      "exercise": "Barbell bench press",
+      "weightLb": 165,
+      "weightNote": "45 + 10 + 5 per side",
+      "sets": 4,
+      "reps": [
+        8,
+        8,
+        6,
+        6
+      ],
+      "hitTopOfRange": false,
+      "pr": null,
+      "notes": "28 total reps, up from 26 (Nov 16: 8,6,6,6). Reported as '2 sets for 8 and 2 for 6'. Stay at 165, chase 4x8."
+    },
+    {
+      "id": "sheet-b09c31e0dbea96ace18e",
+      "date": "2026-11-24",
+      "day": "Back",
+      "exerciseId": "deadlift",
+      "exercise": "Barbell deadlift",
+      "weightLb": 235,
+      "weightNote": "",
+      "sets": 3,
+      "reps": [
+        8,
+        8,
+        8
+      ],
+      "hitTopOfRange": true,
+      "pr": "yes",
+      "notes": "Rep PR (Nov 17: 8,6,6). Reported 'full set and reps'. Next: 245 for 3x6-8."
+    }
+  ]
 }

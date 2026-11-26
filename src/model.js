@@ -299,7 +299,7 @@ export function mergeHistory(entries, local) {
       e.weightLb != null &&
       !comparable.some((p) => p.hitTopOfRange && p.weightLb === e.weightLb);
     const repPR = e.pr?.includes('rep') || beatReps || firstTop;
-    e.pr = weightPR && repPR ? 'weight+rep' : weightPR ? 'weight' : repPR ? 'rep' : null;
+    e.pr = weightPR && repPR ? 'weight+rep' : weightPR ? 'weight' : repPR ? 'rep' : e.pr === 'yes' ? 'yes' : null;
     if (!prior.has(e.exerciseId)) prior.set(e.exerciseId, []);
     prior.get(e.exerciseId).push(e);
   }

@@ -603,6 +603,7 @@ function flags(e) {
   const labels = [
     e.pr?.includes('weight') && 'Weight PR',
     e.pr?.includes('rep') && 'Rep PR',
+    e.pr === 'yes' && 'PR',
     e.hitTopOfRange && 'Hit top',
   ].filter(Boolean);
   return labels.map((s) => '<span class="flag">' + esc(s) + '</span>').join('');
@@ -793,8 +794,8 @@ function targetsView() {
           '<article class="panel target">' +
           title(t.name || t.exerciseId, 'targets') +
           '<div class="target-load">' +
-          esc(t.nextWeightLb ?? '—') +
-          ' <span>lb</span></div><strong>' +
+          (t.nextWeightText ? esc(t.nextWeightText) : esc(t.nextWeightLb ?? '—') + ' <span>lb</span>') +
+          '</div><strong>' +
           esc(t.targetSets ?? '—') +
           ' × ' +
           esc(t.targetReps ?? '—') +
