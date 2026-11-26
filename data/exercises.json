@@ -18,7 +18,7 @@
       "name": "Barbell Deadlift",
       "demo": "demos/illustrations/deadlift.gif",
       "license": "CC BY-SA 4.0",
-      "attribution": "Bryl Lim (workout-guide). First frame adapted from Everkinetic, CC BY-SA 4.0.",
+      "attribution": "Bryl Lim (Workout Guide) and Everkinetic.",
       "aliases": [
         "barbell deadlift",
         "deadlift"
@@ -29,9 +29,9 @@
     "lat-pull-down": {
       "id": "lat-pull-down",
       "name": "Lat Pulldown",
-      "demo": "demos/video/lat-pull-down.gif",
-      "license": "CC0 1.0",
-      "attribution": "namnq/workout-free-videos (GymPlan clips), CC0 1.0.",
+      "demo": "demos/illustrations/lat-pulldown.gif",
+      "license": "CC BY-SA 4.0",
+      "attribution": "Bryl Lim (Workout Guide) and Everkinetic.",
       "aliases": [
         "lat pulldown"
       ],
@@ -43,19 +43,20 @@
       "name": "Leg extension",
       "demo": "demos/illustrations/leg-extension.gif",
       "license": "CC BY-SA 4.0",
-      "attribution": "Bryl Lim / workout-guide. Some first frames adapted from Everkinetic.",
+      "attribution": "Bryl Lim (Workout Guide) and Everkinetic.",
       "aliases": [
         "leg extension"
       ],
       "primaryMuscle": "Legs",
-      "laterality": "unilateral"
+      "laterality": "unilateral",
+      "demoLabel": "Leg extension with both legs"
     },
     "bench-press": {
       "id": "bench-press",
       "name": "Barbell bench press",
       "demo": "demos/illustrations/bench-press.gif",
       "license": "CC BY-SA 4.0",
-      "attribution": "Bryl Lim / workout-guide. Some first frames adapted from Everkinetic.",
+      "attribution": "Bryl Lim (Workout Guide) and Everkinetic.",
       "aliases": [
         "barbell bench press"
       ],
@@ -65,9 +66,9 @@
     "seated-cable-row": {
       "id": "seated-cable-row",
       "name": "Seated cable row",
-      "demo": "demos/illustrations/seated-cable-row.gif",
+      "demo": "demos/illustrations/seated-row.gif",
       "license": "CC BY-SA 4.0",
-      "attribution": "Bryl Lim / workout-guide. Some first frames adapted from Everkinetic.",
+      "attribution": "Bryl Lim (Workout Guide) and Everkinetic.",
       "aliases": [
         "seated cable row"
       ],
@@ -77,9 +78,9 @@
     "straight-arm-lat-pull-down": {
       "id": "straight-arm-lat-pull-down",
       "name": "Straight-arm pulldown",
-      "demo": "demos/illustrations/straight-arm-lat-pull-down.gif",
+      "demo": "demos/illustrations/straight-arm-pulldown.gif",
       "license": "CC BY-SA 4.0",
-      "attribution": "Bryl Lim / workout-guide. Some first frames adapted from Everkinetic.",
+      "attribution": "Bryl Lim (Workout Guide) and Everkinetic.",
       "aliases": [
         "straight-arm pulldown"
       ],
@@ -91,7 +92,7 @@
       "name": "Hanging knee raise",
       "demo": "demos/illustrations/hanging-knee-raise.gif",
       "license": "CC BY-SA 4.0",
-      "attribution": "Bryl Lim / workout-guide. Some first frames adapted from Everkinetic.",
+      "attribution": "Bryl Lim (Workout Guide).",
       "aliases": [
         "hanging knee raise"
       ],
@@ -103,12 +104,137 @@
       "name": "Cable crunch",
       "demo": "demos/illustrations/cable-crunch.gif",
       "license": "CC BY-SA 4.0",
-      "attribution": "Bryl Lim / workout-guide. Some first frames adapted from Everkinetic.",
+      "attribution": "Bryl Lim (Workout Guide) and Everkinetic.",
       "aliases": [
         "cable crunch"
       ],
       "primaryMuscle": "Abs",
       "laterality": "bilateral"
+    },
+    "barbell-incline-bench": {
+      "id": "barbell-incline-bench",
+      "name": "Barbell incline bench",
+      "demo": "demos/illustrations/incline-bench-press.gif",
+      "license": "CC BY-SA 4.0",
+      "attribution": "Bryl Lim (Workout Guide) and Everkinetic."
+    },
+    "hammer-strength-incline-press": {
+      "id": "hammer-strength-incline-press",
+      "name": "Hammer Strength incline press",
+      "demo": "demos/illustrations/machine-chest-press.gif",
+      "license": "CC BY-SA 4.0",
+      "attribution": "Bryl Lim (Workout Guide) and Everkinetic.",
+      "demoLabel": "Machine chest press (different angle)"
+    },
+    "machine-chest-press": {
+      "id": "machine-chest-press",
+      "name": "Machine chest press",
+      "demo": "demos/illustrations/machine-chest-press.gif",
+      "license": "CC BY-SA 4.0",
+      "attribution": "Bryl Lim (Workout Guide) and Everkinetic."
+    },
+    "underhand-cable-fly": {
+      "id": "underhand-cable-fly",
+      "name": "Underhand cable fly",
+      "demo": "demos/illustrations/cable-fly.gif",
+      "license": "CC BY-SA 4.0",
+      "attribution": "Bryl Lim (Workout Guide) and Everkinetic.",
+      "demoLabel": "Cable fly (standard grip)"
+    },
+    "machine-pec-fly": {
+      "id": "machine-pec-fly",
+      "name": "Machine pec fly",
+      "demo": "demos/illustrations/pec-deck.gif",
+      "license": "CC BY-SA 4.0",
+      "attribution": "Bryl Lim (Workout Guide)."
+    },
+    "single-arm-hammer-strength-row": {
+      "id": "single-arm-hammer-strength-row",
+      "name": "Single-arm Hammer Strength row",
+      "demo": "demos/illustrations/single-arm-cable-row.gif",
+      "license": "CC BY-SA 4.0",
+      "attribution": "Bryl Lim (Workout Guide).",
+      "demoLabel": "Single-arm cable row (different equipment)"
+    },
+    "face-pull": {
+      "id": "face-pull",
+      "name": "Face pull",
+      "demo": "demos/illustrations/face-pull.gif",
+      "license": "CC BY-SA 4.0",
+      "attribution": "Bryl Lim (Workout Guide)."
+    },
+    "belt-squat": {
+      "id": "belt-squat",
+      "name": "Belt squat",
+      "demo": "demos/illustrations/belt-squat.gif",
+      "license": "CC BY-SA 4.0",
+      "attribution": "Bryl Lim (Workout Guide)."
+    },
+    "smith-machine-rdl": {
+      "id": "smith-machine-rdl",
+      "name": "Smith machine RDL",
+      "demo": "demos/illustrations/smith-machine-romanian-deadlift.gif",
+      "license": "CC BY-SA 4.0",
+      "attribution": "Bryl Lim (Workout Guide)."
+    },
+    "leg-curl": {
+      "id": "leg-curl",
+      "name": "Leg curl",
+      "demo": "demos/illustrations/leg-curl.gif",
+      "license": "CC BY-SA 4.0",
+      "attribution": "Bryl Lim (Workout Guide) and Everkinetic."
+    },
+    "standing-calf-raise": {
+      "id": "standing-calf-raise",
+      "name": "Standing calf raise",
+      "demo": "demos/illustrations/standing-calf-raise.gif",
+      "license": "CC BY-SA 4.0",
+      "attribution": "Bryl Lim (Workout Guide) and Everkinetic."
+    },
+    "seated-barbell-shoulder-press": {
+      "id": "seated-barbell-shoulder-press",
+      "name": "Seated barbell shoulder press",
+      "demo": "demos/illustrations/overhead-press.gif",
+      "license": "CC BY-SA 4.0",
+      "attribution": "Bryl Lim (Workout Guide).",
+      "demoLabel": "Standing barbell overhead press"
+    },
+    "iso-lateral-shoulder-press": {
+      "id": "iso-lateral-shoulder-press",
+      "name": "Iso-lateral shoulder press",
+      "demo": "demos/illustrations/machine-shoulder-press.gif",
+      "license": "CC BY-SA 4.0",
+      "attribution": "Bryl Lim (Workout Guide).",
+      "demoLabel": "Machine shoulder press (different machine)"
+    },
+    "dumbbell-lateral-raise": {
+      "id": "dumbbell-lateral-raise",
+      "name": "DB lateral raise",
+      "demo": "demos/illustrations/lateral-raise.gif",
+      "license": "CC BY-SA 4.0",
+      "attribution": "Bryl Lim (Workout Guide) and Everkinetic."
+    },
+    "machine-curl": {
+      "id": "machine-curl",
+      "name": "Machine curl",
+      "demo": "demos/illustrations/preacher-curl.gif",
+      "license": "CC BY-SA 4.0",
+      "attribution": "Bryl Lim (Workout Guide) and Everkinetic.",
+      "demoLabel": "Preacher curl (different equipment)"
+    },
+    "standing-ez-bar-curl": {
+      "id": "standing-ez-bar-curl",
+      "name": "Standing EZ-bar curl",
+      "demo": "demos/illustrations/ez-bar-curl.gif",
+      "license": "CC BY-SA 4.0",
+      "attribution": "Bryl Lim (Workout Guide) and Everkinetic."
+    },
+    "seated-concentration-curl": {
+      "id": "seated-concentration-curl",
+      "name": "Seated concentration curl",
+      "demo": "demos/illustrations/concentration-curl.gif",
+      "license": "CC BY-SA 4.0",
+      "attribution": "Bryl Lim (Workout Guide) and Everkinetic."
     }
   }
 }
