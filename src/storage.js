@@ -171,7 +171,7 @@ export function readSessions() {
   return sessions;
 }
 const volatile = new Map();
-async function cached(path) {
+export async function cached(path) {
   if (!db) return volatile.get(path);
   return new Promise((resolve) => {
     const req = db.transaction('feeds').objectStore('feeds').get(path);
@@ -179,7 +179,7 @@ async function cached(path) {
     req.onerror = () => resolve(volatile.get(path));
   });
 }
-async function remember(path, value) {
+export async function remember(path, value) {
   volatile.set(path, value);
   if (!db) return;
   await new Promise((resolve) => {

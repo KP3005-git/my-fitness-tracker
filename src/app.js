@@ -21,6 +21,7 @@ import {
 import { fieldKey, save, openStore, readSessions, fetchFeed } from './storage.js';
 import { demoFiles } from './demo-files.js';
 import { icon } from './icons.js';
+import { sheetFeed } from './sheet.js';
 import { trainingPhoto } from './training-photo.js';
 
 const $ = (s) => document.querySelector(s);
@@ -83,14 +84,15 @@ function recompute() {
     }
   history = mergeHistory(feed.log?.entries || [], locals);
 }
+let sheetStatus = '';
 function displayBanners() {
   const messages = [...new Set([deviceNotice, ...notices].filter(Boolean))]
     .map((s) => '<p>' + esc(s) + '</p>')
     .join('');
-  const sample = route() === 'today' && date !== sampleDate && feed.meta?.message
-    ? button('open-sample', esc(feed.meta.message), 'today', 'secondary sample-banner')
+  const sample = route() === 'today' && date !== feed.meta?.latestWorkoutDate && validDate(feed.meta?.latestWorkoutDate) && feed.meta?.message
+    ? button('open-latest', esc(feed.meta.message), 'today', 'secondary sample-banner')
     : '';
-  $('#banners').innerHTML = messages + sample;
+  $('#banners').innerHTML = messages + sample + (sheetStatus ? '<small class="sheet-status">' + esc(sheetStatus) + '</small>' : '');
 }
 function tell(s) {
   if ($('#dialog').open && $('#dialog-status')) {
@@ -125,6 +127,14 @@ async function loadDay(reset = true) {
   ];
   const results = await Promise.all(specs.map(([k, p]) => fetchFeed(k, p, d)));
   if (token !== serial) return;
+  const [plans, log, targets] = await Promise.all(['workouts','log','targets'].map(kind =>
+    sheetFeed(kind, results[1].data || {})));
+  if (token !== serial) return;
+  if (plans?.data[d]) results[0] = {data: plans.data[d]};
+  if (plans) results[5] = {data: {schemaVersion:1, dates:[...new Set([
+    ...(results[5].data?.dates || []), ...Object.keys(plans.data)])].sort().reverse()}};
+  if (log) results[3] = {data:log.data};
+  if (targets) results[2] = {data:targets.data};
   let weekly = null;
   if (!results[0].data && d === today()) {
     // This reference week supplies a valid schema-v1 date for each template.
@@ -139,6 +149,15 @@ async function loadDay(reset = true) {
     feed = Object.fromEntries(specs.map(([k], i) => [k, results[i].data]));
     program = feed.workout || (weekly?.data ? { ...weekly.data, date: d } : null);
     notices = [...results, weekly].map((r) => r?.notice).filter(Boolean);
+    const tabs = [plans,log,targets].filter(Boolean);
+    const live = tabs.filter(tab => tab.live);
+    const time = tabs.length && new Date(Math.min(...tabs.map(tab => tab.at))).toLocaleString([], {
+      month:'short',day:'numeric',hour:'numeric',minute:'2-digit'});
+    sheetStatus = !tabs.length ? 'Using tracker files · Sheet unavailable' :
+      live.length === 3 ? 'Synced from sheet at ' + time :
+      !live.length && tabs.length === 3 ? 'Cached sheet data from ' + time :
+      'Partial sheet sync · ' + [plans,log,targets].map((t,i) =>
+        ['Workouts','Log','Targets'][i] + ': ' + (t?.live ? 'live' : t ? 'cached' : 'tracker file')).join(' · ');
     recompute();
     setupProgram(reset);
     ready = true;
@@ -1195,6 +1214,10 @@ document.addEventListener('click', async (e) => {
       case 'close':
         $('#dialog').close();
         break;
+      case 'open-latest':
+        location.hash = 'today';
+        changeDay(feed.meta.latestWorkoutDate);
+        break;
       case 'open-today':
       case 'open-sample':
         location.hash = 'today';
@@ -1308,7 +1331,7 @@ document.addEventListener('visibilitychange', () => {
     timerPaint();
     if (ready && followToday && date !== today()) {
       changeDay(today());
-    }
+    } else if (ready) loadDay(false);
   }
 });
 setInterval(() => {

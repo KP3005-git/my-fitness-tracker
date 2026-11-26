@@ -1,5 +1,21 @@
 # Updating My Fitness Tracker
 
+## Live Google Sheet
+
+Edit the existing **Workouts**, **Log** and **Next Targets** tabs in TITAN Lift Log - Kaelen. Keep the tabs in place so their numeric tab IDs stay stable. The app reads each tab independently on open, workout date change, reconnect, and return to the app. Reload to fetch edits immediately. A valid sheet workout takes precedence over the dated repository workout and weekly template. A successful empty log or targets tab clears that feed. A missing date falls back to repository programming. On a failed or malformed response, the tracker uses that tab’s last valid offline copy, then the bundled JSON. The sync note identifies the source.
+
+For anonymous access, open the workbook, choose **Share → General access → Anyone with the link → Viewer → Done**. This grants read access to the whole workbook. Keep the spreadsheet editable only by its owners and TITAN.
+
+**Workouts header row** (one exercise per row):
+
+```text
+Date | Title | Order | Block ID | Block Type | Rounds | Exercise | Exercise ID | Item ID | Sets | Rep Min | Rep Max | Weight lb | Weight Note | Rest Sec | RIR | Laterality | Cues | Swap | Warm-up | Warm-up Min | Abs | Coach Note | Split | Minutes | Progression Rule | Last Session | Goal
+```
+
+Use ISO dates and a unique numeric Order per date. For each standalone lift use a unique Block ID and Block Type `exercise`. For a superset or circuit, repeat the Block ID, Block Type, Rounds and Rest Sec across its rows, and give each item a distinct Item ID. Leave unknown loads blank. Exercise ID refers to the catalog. Put shared day fields (Title, Split, Minutes, Warm-up, Warm-up Min, Coach Note, Progression Rule and Abs) on the first row. Abs accepts a v1 JSON object with rounds and items. The [complete example rows](workouts-example.csv) include a straight set, a two-exercise superset, and an abs block.
+
+Keep the Log and Next Targets headers from the original CSV exports. The manual workflow below also maintains the bundled fallback.
+
 TITAN maintains dated workouts, accepted lift history, and next targets. Open a GitHub issue titled `[TITAN] ...` for code changes. Pull before editing or pushing. Data committed here is public.
 
 ## Daily workout contract (v1)

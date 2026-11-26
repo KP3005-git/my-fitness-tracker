@@ -1751,3 +1751,4 @@ dialog {
   .dock-hidden .appbar nav:not(:has(:focus-visible)) { transform: translateY(calc(100% + 16px + env(safe-area-inset-bottom))); }
 }
 @media (prefers-reduced-motion: reduce) { .appbar nav { transition: none; } }
+.sheet-status { display: block; color: var(--muted); font-size: .75rem; margin: 0 0 .6rem; }
