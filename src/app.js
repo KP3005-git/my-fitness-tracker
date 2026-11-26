@@ -151,11 +151,52 @@ async function loadDay(reset = true) {
     apply();
   }
 }
+function setupNavigation() {
+  const root = document.documentElement;
+  const mobile = matchMedia('(max-width: 899px)');
+  const toggle = $('.dock-toggle');
+  function collapse(value) {
+    root.classList.toggle('dock-collapsed', value);
+    toggle.setAttribute('aria-expanded', String(!value));
+    toggle.title = value ? 'Expand sidebar' : 'Collapse sidebar';
+    toggle.setAttribute('aria-label', toggle.title);
+  }
+  try { collapse(localStorage.getItem('tracker.dock.collapsed') === '1'); } catch { collapse(false); }
+  toggle.addEventListener('click', () => {
+    const value = !root.classList.contains('dock-collapsed');
+    collapse(value);
+    try { localStorage.setItem('tracker.dock.collapsed', value ? '1' : '0'); } catch {}
+  });
+
+  let previous = scrollY, distance = 0;
+  function reveal() {
+    root.classList.remove('dock-hidden');
+    previous = scrollY;
+    distance = 0;
+  }
+  mobile.addEventListener('change', reveal);
+  window.addEventListener('hashchange', reveal);
+  $('#nav').addEventListener('focusin', reveal);
+  window.addEventListener('scroll', () => {
+    if (!mobile.matches) return;
+    const max = Math.max(0, document.documentElement.scrollHeight - innerHeight);
+    const y = Math.min(max, Math.max(0, scrollY));
+    const delta = y - previous;
+    previous = y;
+    if (y <= 8) return reveal();
+    if (!delta) return;
+    if (Math.sign(delta) !== Math.sign(distance)) distance = 0;
+    distance += delta;
+    if (distance >= 12) root.classList.add('dock-hidden');
+    if (distance <= -72) reveal();
+  }, { passive: true });
+}
+
 function renderNav() {
   $('#nav').innerHTML = ['today', 'history', 'targets']
     .map(
       (k) =>
-        '<a href="#' +
+        '<a title="' + k[0].toUpperCase() + k.slice(1) + '" href="#' +
         k +
         '" ' +
         (route() === k ? 'aria-current="page"' : '') +
@@ -1276,6 +1317,7 @@ setInterval(() => {
   }
 }, 30000);
 async function init() {
+  setupNavigation();
   renderNav();
   await openStore(
     (msg) => {

@@ -1702,3 +1702,52 @@ dialog {
   color: var(--accent);
   font-size: 0.9rem;
 }
+
+/* The same links form a desktop sidebar and a floating phone tab bar. */
+.dock-toggle { display: none; }
+@media (min-width: 900px) {
+  body { --dock-width: 244px; padding-left: var(--dock-width); }
+  html.dock-collapsed body { --dock-width: 68px; }
+  body::before { left: var(--dock-width); }
+  .appbar {
+    position: fixed; inset: 0 auto 0 0; width: var(--dock-width); z-index: 3;
+    border: 0; border-right: 1px solid var(--glass-edge);
+    background: linear-gradient(155deg, #191e28f7, #0b0d12fa);
+  }
+  .bar-inner {
+    height: 100%; padding: 22px 12px; gap: 14px; align-items: stretch;
+    flex-direction: column; overflow-y: auto;
+  }
+  .dock-toggle {
+    display: grid; place-items: center; align-self: flex-end; height: 30px; width: 34px;
+    color: var(--muted); background: var(--glass); border: 1px solid var(--glass-edge);
+    border-radius: 9px; font: 600 1.35rem/1 var(--body); cursor: pointer;
+  }
+  .appbar nav { flex-direction: column; margin: 0; padding: 0; gap: 7px; border: 0; background: none; box-shadow: none; }
+  .appbar nav a { border-radius: 13px; }
+  .appbar nav a[aria-current] { border-radius: 13px; }
+  .availability { margin-top: auto; padding: 8px; }
+  .dock-collapsed .brand-copy, .dock-collapsed #nav a span {
+    position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%);
+  }
+  .dock-collapsed .brand, .dock-collapsed #nav a { justify-content: center; padding: 0; }
+  .dock-collapsed .dock-toggle { align-self: center; }
+  .dock-collapsed .dock-toggle span { transform: rotate(180deg); }
+  .dock-collapsed .availability { justify-content: center; font-size: 0; gap: 0; }
+}
+@media (min-width: 900px) and (max-width: 1170px) {
+  .workout-layout { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 899px) {
+  body { padding-bottom: calc(80px + env(safe-area-inset-bottom)); }
+  .availability { margin-left: auto; }
+  .appbar nav {
+    position: fixed; z-index: 3; inset: auto max(10px, env(safe-area-inset-right)) calc(8px + env(safe-area-inset-bottom)) max(10px, env(safe-area-inset-left));
+    display: flex; justify-content: space-around; padding: 5px; border-radius: 24px;
+    background: linear-gradient(135deg, #252b39ed, #12151eea);
+    backdrop-filter: blur(20px); transition: transform .25s ease;
+  }
+  .appbar nav a { flex: 1; flex-direction: column; gap: 1px; justify-content: center; min-height: 46px; font-size: .77rem; }
+  .dock-hidden .appbar nav:not(:has(:focus-visible)) { transform: translateY(calc(100% + 16px + env(safe-area-inset-bottom))); }
+}
+@media (prefers-reduced-motion: reduce) { .appbar nav { transition: none; } }
