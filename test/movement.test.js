@@ -18,5 +18,6 @@ test('sheet override reaches the card; variants use exact mappings or the placeh
   assert.equal(demo(ex,'/' + map['leg-extension'].src),map['leg-extension'].src);
   assert.equal(demo(ex,'javascript:invalid'),map.deadlift.src);
   assert.equal(demo({name:'Seated straight-arm DB lateral raise',exerciseId:'dumbbell-lateral-raise'}),map['seated-dumbbell-lateral-raise'].src);
-  assert.match(demo({name:'Seated DB shrugs',exerciseId:'dumbbell-shrug'}),/placeholders/);
+  assert.equal(demo({name:'Seated DB shrugs',exerciseId:'dumbbell-shrug'}),map['seated-dumbbell-shrug'].src);
+  assert.match(demo({name:'Unknown exercise', exerciseId:'unknown'}),/placeholders/);
 });

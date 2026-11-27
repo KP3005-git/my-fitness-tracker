@@ -143,5 +143,30 @@
     "src": "demos/library/chest-supported-dumbbell-row.gif",
     "credit": "Free Exercise DB contributors",
     "license": "Unlicense"
+  },
+  "single-arm-hammer-strength-row": {
+    "src": "demos/original/single-arm-hammer-strength-row.gif",
+    "credit": "My Fitness Tracker original movement diagram",
+    "license": "CC0 1.0"
+  },
+  "lateral-raise-partials": {
+    "src": "demos/original/lateral-raise-partials.gif",
+    "credit": "My Fitness Tracker original movement diagram",
+    "license": "CC0 1.0"
+  },
+  "seated-dumbbell-front-raise": {
+    "src": "demos/original/seated-dumbbell-front-raise.gif",
+    "credit": "My Fitness Tracker original movement diagram",
+    "license": "CC0 1.0"
+  },
+  "seated-dumbbell-shrug": {
+    "src": "demos/original/seated-dumbbell-shrug.gif",
+    "credit": "My Fitness Tracker original movement diagram",
+    "license": "CC0 1.0"
+  },
+  "bent-arm-lateral-raise": {
+    "src": "demos/original/bent-arm-lateral-raise.gif",
+    "credit": "My Fitness Tracker original movement diagram",
+    "license": "CC0 1.0"
   }
 }

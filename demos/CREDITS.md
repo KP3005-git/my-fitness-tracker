@@ -35,3 +35,13 @@ All mapped demos are served from this repository. Free Exercise DB sequences alt
 | chest-supported-dumbbell-row | [chest-supported-dumbbell-row.gif](library/chest-supported-dumbbell-row.gif) | [Free Exercise DB contributors](https://github.com/yuhonas/free-exercise-db/tree/f00c92c7dcf1216a928a52c3706c7ce8e2f71ed5/exercises/Dumbbell_Incline_Row) | Unlicense |
 
 Licenses: [Unlicense](licenses/Unlicense.txt) and [CC BY-SA 4.0](licenses/CC-BY-SA-4.0.txt). The fallback equipment previews use [CC0](licenses/CC0-1.0.txt).
+
+## Original movement diagrams
+
+Rendered for this tracker with [draw_demos.py](../scripts/draw_demos.py). Each animation is dedicated to the public domain under [CC0 1.0](licenses/CC0-1.0.txt). The row depicts a schematic chest-supported, independent lever machine. The partial raise illustrates TITAN’s short lower-range prescription.
+
+- [single-arm-hammer-strength-row](original/single-arm-hammer-strength-row.gif)
+- [lateral-raise-partials](original/lateral-raise-partials.gif)
+- [seated-dumbbell-front-raise](original/seated-dumbbell-front-raise.gif)
+- [seated-dumbbell-shrug](original/seated-dumbbell-shrug.gif)
+- [bent-arm-lateral-raise](original/bent-arm-lateral-raise.gif)

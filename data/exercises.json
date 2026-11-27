@@ -171,7 +171,10 @@
     },
     "single-arm-hammer-strength-row": {
       "id": "single-arm-hammer-strength-row",
-      "name": "Single-arm Hammer Strength row"
+      "name": "Single-arm Hammer Strength row",
+      "demo": "demos/original/single-arm-hammer-strength-row.gif",
+      "attribution": "My Fitness Tracker original movement diagram",
+      "license": "CC0 1.0"
     },
     "face-pull": {
       "id": "face-pull",
@@ -279,7 +282,10 @@
     "lateral-raise-partials": {
       "id": "lateral-raise-partials",
       "name": "Lateral raise partials",
-      "aliases": []
+      "aliases": [],
+      "demo": "demos/original/lateral-raise-partials.gif",
+      "attribution": "My Fitness Tracker original movement diagram",
+      "license": "CC0 1.0"
     },
     "seated-dumbbell-lateral-raise": {
       "id": "seated-dumbbell-lateral-raise",
@@ -306,21 +312,30 @@
       "name": "Seated dumbbell front raise",
       "aliases": [
         "Seated DB front raise"
-      ]
+      ],
+      "demo": "demos/original/seated-dumbbell-front-raise.gif",
+      "attribution": "My Fitness Tracker original movement diagram",
+      "license": "CC0 1.0"
     },
     "seated-dumbbell-shrug": {
       "id": "seated-dumbbell-shrug",
       "name": "Seated dumbbell shrug",
       "aliases": [
         "Seated DB shrugs"
-      ]
+      ],
+      "demo": "demos/original/seated-dumbbell-shrug.gif",
+      "attribution": "My Fitness Tracker original movement diagram",
+      "license": "CC0 1.0"
     },
     "bent-arm-lateral-raise": {
       "id": "bent-arm-lateral-raise",
       "name": "Bent-arm lateral raise",
       "aliases": [
         "Bent-arm (90 degree) lateral raise"
-      ]
+      ],
+      "demo": "demos/original/bent-arm-lateral-raise.gif",
+      "attribution": "My Fitness Tracker original movement diagram",
+      "license": "CC0 1.0"
     }
   }
 }
