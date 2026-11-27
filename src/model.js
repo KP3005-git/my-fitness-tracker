@@ -136,14 +136,19 @@ export function normalize(s = '') {
     .replace(/[\s-]+/g, ' ')
     .trim();
 }
+function equipmentName(name) {
+  return normalize(name).replace(/\bdbs?\b/g, 'dumbbell').replace(/\bbb\b/g, 'barbell')
+    .replace(/\bhs\b/g, 'hammer strength').replace(/\btricep\b/g, 'triceps');
+}
 export function lookup(ex, catalog = {}) {
   const all = catalog.exercises || {};
   const alias = normalize(ex.name);
+  const expanded = equipmentName(ex.name);
   const id = [
     ex.exerciseId,
     catalog.lookup?.[alias],
     ...Object.keys(all).filter(
-      (k) => all[k]?.aliases?.some((a) => normalize(a) === alias) || normalize(all[k]?.name) === alias,
+      (k) => expanded && [k, all[k]?.name, ...(all[k]?.aliases || [])].some(name => equipmentName(name) === expanded),
     ),
   ].find((k) => k && Object.hasOwn(all, k));
   return { id: id || ex.exerciseId || ex.id || alias.replaceAll(' ', '-'), ...((id && all[id]) || {}) };

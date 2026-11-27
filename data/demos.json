@@ -168,5 +168,90 @@
     "src": "demos/original/bent-arm-lateral-raise.gif",
     "credit": "My Fitness Tracker original movement diagram",
     "license": "CC0 1.0"
+  },
+  "close-grip-bench-press": {
+    "src": "demos/library/close-grip-bench-press.gif",
+    "credit": "Free Exercise DB contributors",
+    "license": "Unlicense"
+  },
+  "rope-tricep-pushdown": {
+    "src": "demos/library/rope-tricep-pushdown.gif",
+    "credit": "Free Exercise DB contributors",
+    "license": "Unlicense"
+  },
+  "overhead-cable-triceps-extension": {
+    "src": "demos/library/overhead-cable-triceps-extension.gif",
+    "credit": "Free Exercise DB contributors",
+    "license": "Unlicense"
+  },
+  "machine-dip": {
+    "src": "demos/library/machine-dip.gif",
+    "credit": "Free Exercise DB contributors",
+    "license": "Unlicense"
+  },
+  "straight-bar-pushdown": {
+    "src": "demos/library/straight-bar-pushdown.gif",
+    "credit": "Free Exercise DB contributors",
+    "license": "Unlicense"
+  },
+  "skull-crusher": {
+    "src": "demos/library/skull-crusher.gif",
+    "credit": "Free Exercise DB contributors",
+    "license": "Unlicense"
+  },
+  "dumbbell-overhead-triceps-extension": {
+    "src": "demos/library/dumbbell-overhead-triceps-extension.gif",
+    "credit": "Free Exercise DB contributors",
+    "license": "Unlicense"
+  },
+  "bench-dip": {
+    "src": "demos/library/bench-dip.gif",
+    "credit": "Free Exercise DB contributors",
+    "license": "Unlicense"
+  },
+  "preacher-curl": {
+    "src": "demos/library/preacher-curl.gif",
+    "credit": "Free Exercise DB contributors",
+    "license": "Unlicense"
+  },
+  "hammer-curl": {
+    "src": "demos/library/hammer-curl.gif",
+    "credit": "Free Exercise DB contributors",
+    "license": "Unlicense"
+  },
+  "cable-curl": {
+    "src": "demos/library/cable-curl.gif",
+    "credit": "Free Exercise DB contributors",
+    "license": "Unlicense"
+  },
+  "leg-press": {
+    "src": "demos/library/leg-press.gif",
+    "credit": "Free Exercise DB contributors",
+    "license": "Unlicense"
+  },
+  "hack-squat": {
+    "src": "demos/library/hack-squat.gif",
+    "credit": "Free Exercise DB contributors",
+    "license": "Unlicense"
+  },
+  "barbell-row": {
+    "src": "demos/library/barbell-row.gif",
+    "credit": "Free Exercise DB contributors",
+    "license": "Unlicense"
+  },
+  "reverse-pec-deck": {
+    "src": "demos/library/reverse-pec-deck.gif",
+    "credit": "Free Exercise DB contributors",
+    "license": "Unlicense"
+  },
+  "cable-lateral-raise": {
+    "src": "demos/library/cable-lateral-raise.gif",
+    "credit": "Free Exercise DB contributors",
+    "license": "Unlicense"
+  },
+  "plank": {
+    "src": "demos/library/plank.gif",
+    "credit": "Free Exercise DB contributors",
+    "license": "Unlicense"
   }
 }

@@ -21,3 +21,20 @@ test('sheet override reaches the card; variants use exact mappings or the placeh
   assert.equal(demo({name:'Seated DB shrugs',exerciseId:'dumbbell-shrug'}),map['seated-dumbbell-shrug'].src);
   assert.match(demo({name:'Unknown exercise', exerciseId:'unknown'}),/placeholders/);
 });
+test('blank sheet IDs resolve equipment abbreviations, punctuation, and triceps aliases', async () => {
+  const catalog = JSON.parse(await readFile(new URL('../data/exercises.json', import.meta.url)));
+  const map = JSON.parse(await readFile(new URL('../data/demos.json', import.meta.url)));
+  const header = 'Date,Title,Order,Block ID,Block Type,Exercise,Exercise ID';
+  const names = [
+    ['DB overhead triceps extension!', 'dumbbell-overhead-triceps-extension'],
+    ['ROPE TRICEPS PUSHDOWN', 'rope-tricep-pushdown'],
+    ['Close-grip bench press', 'close-grip-bench-press'],
+    ['BB row', 'barbell-row'],
+  ];
+  for (const [name,id] of names) {
+    const data = parseTab('workouts', header + '\n2026-11-27,Arms,1,lift,exercise,' + name + ',', catalog);
+    const exercise = blocksFor(data['2026-11-27'],catalog)[0].items[0];
+    assert.equal(exercise.exerciseId,id);
+    assert.equal(movementFor(exercise,catalog,map,new Set()).src,map[id].src);
+  }
+});

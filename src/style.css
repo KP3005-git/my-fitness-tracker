@@ -732,7 +732,7 @@ body::before {
   z-index: -1;
   pointer-events: none;
   background: url(../assets/lifter-outline.svg) center 55% / min(64vw, 56vh, 510px) auto no-repeat;
-  filter: drop-shadow(0 0 4px #ffffff52);
+  filter: drop-shadow(0 0 5px #71aaff);
   opacity: .32;
 }
 .brand-copy { display: grid; gap: 3px; line-height: 1.1; }

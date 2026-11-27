@@ -336,6 +336,177 @@
       "demo": "demos/original/bent-arm-lateral-raise.gif",
       "attribution": "My Fitness Tracker original movement diagram",
       "license": "CC0 1.0"
+    },
+    "close-grip-bench-press": {
+      "id": "close-grip-bench-press",
+      "name": "Close-grip bench press",
+      "aliases": [
+        "Close grip barbell bench press"
+      ],
+      "demo": "demos/library/close-grip-bench-press.gif",
+      "attribution": "Free Exercise DB contributors",
+      "license": "Unlicense"
+    },
+    "rope-tricep-pushdown": {
+      "id": "rope-tricep-pushdown",
+      "name": "Rope tricep pushdown",
+      "aliases": [
+        "Rope triceps pushdown",
+        "Triceps rope pushdown"
+      ],
+      "demo": "demos/library/rope-tricep-pushdown.gif",
+      "attribution": "Free Exercise DB contributors",
+      "license": "Unlicense"
+    },
+    "overhead-cable-triceps-extension": {
+      "id": "overhead-cable-triceps-extension",
+      "name": "Overhead cable triceps extension",
+      "aliases": [
+        "Cable overhead triceps extension"
+      ],
+      "demo": "demos/library/overhead-cable-triceps-extension.gif",
+      "attribution": "Free Exercise DB contributors",
+      "license": "Unlicense"
+    },
+    "machine-dip": {
+      "id": "machine-dip",
+      "name": "Machine dip",
+      "aliases": [
+        "Seated dip machine"
+      ],
+      "demo": "demos/library/machine-dip.gif",
+      "attribution": "Free Exercise DB contributors",
+      "license": "Unlicense"
+    },
+    "straight-bar-pushdown": {
+      "id": "straight-bar-pushdown",
+      "name": "Straight-bar pushdown",
+      "aliases": [
+        "Straight bar triceps pushdown"
+      ],
+      "demo": "demos/library/straight-bar-pushdown.gif",
+      "attribution": "Free Exercise DB contributors",
+      "license": "Unlicense"
+    },
+    "skull-crusher": {
+      "id": "skull-crusher",
+      "name": "Skull crusher",
+      "aliases": [
+        "Skullcrusher",
+        "EZ-bar skull crusher"
+      ],
+      "demo": "demos/library/skull-crusher.gif",
+      "attribution": "Free Exercise DB contributors",
+      "license": "Unlicense"
+    },
+    "dumbbell-overhead-triceps-extension": {
+      "id": "dumbbell-overhead-triceps-extension",
+      "name": "Dumbbell overhead triceps extension",
+      "aliases": [
+        "Overhead dumbbell triceps extension"
+      ],
+      "demo": "demos/library/dumbbell-overhead-triceps-extension.gif",
+      "attribution": "Free Exercise DB contributors",
+      "license": "Unlicense"
+    },
+    "bench-dip": {
+      "id": "bench-dip",
+      "name": "Bench dip",
+      "aliases": [
+        "Bench dips"
+      ],
+      "demo": "demos/library/bench-dip.gif",
+      "attribution": "Free Exercise DB contributors",
+      "license": "Unlicense"
+    },
+    "preacher-curl": {
+      "id": "preacher-curl",
+      "name": "Preacher curl",
+      "aliases": [
+        "Barbell preacher curl"
+      ],
+      "demo": "demos/library/preacher-curl.gif",
+      "attribution": "Free Exercise DB contributors",
+      "license": "Unlicense"
+    },
+    "hammer-curl": {
+      "id": "hammer-curl",
+      "name": "Hammer curl",
+      "aliases": [
+        "Dumbbell hammer curl"
+      ],
+      "demo": "demos/library/hammer-curl.gif",
+      "attribution": "Free Exercise DB contributors",
+      "license": "Unlicense"
+    },
+    "cable-curl": {
+      "id": "cable-curl",
+      "name": "Cable curl",
+      "aliases": [
+        "Standing cable curl"
+      ],
+      "demo": "demos/library/cable-curl.gif",
+      "attribution": "Free Exercise DB contributors",
+      "license": "Unlicense"
+    },
+    "leg-press": {
+      "id": "leg-press",
+      "name": "Leg press",
+      "aliases": [],
+      "demo": "demos/library/leg-press.gif",
+      "attribution": "Free Exercise DB contributors",
+      "license": "Unlicense"
+    },
+    "hack-squat": {
+      "id": "hack-squat",
+      "name": "Hack squat",
+      "aliases": [
+        "Machine hack squat"
+      ],
+      "demo": "demos/library/hack-squat.gif",
+      "attribution": "Free Exercise DB contributors",
+      "license": "Unlicense"
+    },
+    "barbell-row": {
+      "id": "barbell-row",
+      "name": "Barbell row",
+      "aliases": [
+        "Bent-over barbell row"
+      ],
+      "demo": "demos/library/barbell-row.gif",
+      "attribution": "Free Exercise DB contributors",
+      "license": "Unlicense"
+    },
+    "reverse-pec-deck": {
+      "id": "reverse-pec-deck",
+      "name": "Reverse pec deck",
+      "aliases": [
+        "Reverse machine fly",
+        "Reverse pec deck fly"
+      ],
+      "demo": "demos/library/reverse-pec-deck.gif",
+      "attribution": "Free Exercise DB contributors",
+      "license": "Unlicense"
+    },
+    "cable-lateral-raise": {
+      "id": "cable-lateral-raise",
+      "name": "Cable lateral raise",
+      "aliases": [
+        "Single-arm cable lateral raise"
+      ],
+      "demo": "demos/library/cable-lateral-raise.gif",
+      "attribution": "Free Exercise DB contributors",
+      "license": "Unlicense"
+    },
+    "plank": {
+      "id": "plank",
+      "name": "Plank",
+      "aliases": [
+        "Forearm plank"
+      ],
+      "demo": "demos/library/plank.gif",
+      "attribution": "Free Exercise DB contributors",
+      "license": "Unlicense"
     }
   }
 }

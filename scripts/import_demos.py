@@ -20,6 +20,23 @@ MOVES = {
     "dumbbell-shrug": "Dumbbell_Shrug",
     "seated-dumbbell-lateral-raise": "Seated_Side_Lateral_Raise",
     "chest-supported-dumbbell-row": "Dumbbell_Incline_Row",
+    "close-grip-bench-press": "Close-Grip_Barbell_Bench_Press",
+    "rope-tricep-pushdown": "Triceps_Pushdown_-_Rope_Attachment",
+    "overhead-cable-triceps-extension": "Cable_Rope_Overhead_Triceps_Extension",
+    "machine-dip": "Dip_Machine",
+    "straight-bar-pushdown": "Triceps_Pushdown",
+    "skull-crusher": "EZ-Bar_Skullcrusher",
+    "dumbbell-overhead-triceps-extension": "Standing_Dumbbell_Triceps_Extension",
+    "bench-dip": "Bench_Dips",
+    "preacher-curl": "Preacher_Curl",
+    "hammer-curl": "Hammer_Curls",
+    "cable-curl": "Standing_Biceps_Cable_Curl",
+    "leg-press": "Leg_Press",
+    "hack-squat": "Hack_Squat",
+    "barbell-row": "Bent_Over_Barbell_Row",
+    "reverse-pec-deck": "Reverse_Machine_Flyes",
+    "cable-lateral-raise": "Standing_Low-Pulley_Deltoid_Raise",
+    "plank": "Plank",
 }
 
 if __name__ == "__main__":
