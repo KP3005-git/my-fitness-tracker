@@ -1,7 +1,7 @@
 {
   "id": "./",
-  "name": "My Fitness Tracker",
-  "short_name": "Fitness Tracker",
+  "name": "Train with TITAN",
+  "short_name": "TITAN",
   "description": "An offline training log",
   "start_url": "./",
   "scope": "./",
