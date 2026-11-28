@@ -21,7 +21,7 @@ const dates = (await readdir(path.join(dist, 'data/workouts')))
 await writeFile(path.join(dist, 'data/dates.json'), JSON.stringify({ schemaVersion: 1, dates }));
 await writeFile(
   path.join(dist, '404.html'),
-  `<!doctype html><meta charset="utf-8"><title>My Fitness Tracker</title><script>const p=location.pathname;const project='/my-fitness-tracker/';location.replace((p.includes(project)?p.slice(0,p.indexOf(project))+project:'/')+'index.html'+location.hash);</script><a href="./">Open My Fitness Tracker</a>`,
+  `<!doctype html><meta charset="utf-8"><title>Train with TITAN</title><script>const p=location.pathname;const project='/my-fitness-tracker/';location.replace((p.includes(project)?p.slice(0,p.indexOf(project))+project:'/')+'index.html'+location.hash);</script><a href="./">Open Train with TITAN</a>`,
 );
 async function filesIn(folder) {
   const children = await readdir(folder, { withFileTypes: true });

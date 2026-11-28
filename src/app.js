@@ -257,6 +257,19 @@ const dateButton = () =>
     'date-btn',
     'aria-label="Choose workout date"',
   ).replace('</button>', icon('down') + '</button>');
+const titanPhoto = new URL('../assets/titan.png', import.meta.url).href;
+
+function coachMessage(label, message, prominent = false) {
+  return '<section class="coach-message' + (prominent ? ' coach-intro' : '') + '">' +
+    '<img class="coach-avatar" src="' + esc(titanPhoto) + '" alt="' +
+    (prominent ? 'TITAN, your strength coach' : '') + '">' +
+    '<div><h2>' + esc(label) + '</h2>' + message + '</div></section>';
+}
+
+function coachText(message) {
+  return '<p>' + esc(message) + '</p>';
+}
+
 function workoutView() {
   const heading = program?.title || (lifts.length ? 'Saved workout' : 'Rest day');
   const photo = trainingPhoto(program, lifts);
@@ -275,9 +288,14 @@ function workoutView() {
     lifts.length +
     ' exercise' +
     (lifts.length === 1 ? '' : 's') +
-    '</span></div><p class="training-line">' +
-    (photo === 'neon-wall' ? 'Give recovery the same attention as a working set.' : 'Make this set one you’re proud to log.') +
-    '</p></div></section>';
+    '</span></div></div></section>';
+  const directive = coachMessage('TITAN · Your coach', coachText(program?.coachNote ||
+    (lifts.length
+      ? 'Kaelen, stick to the prescribed reps and log your working sets so I can track your progress.'
+      : 'Kaelen, give recovery the same attention as your working sets.')) +
+    (program?.progressionRule
+      ? '<p><strong>Progression</strong> · ' + esc(program.progressionRule) + '</p>'
+      : ''), true);
   const plan =
     '<section class="plan"><div class="section-head"><h2>Workout plan</h2></div>' +
     (!program
@@ -310,15 +328,10 @@ function workoutView() {
     '</section>';
   const rail =
     '<aside class="rail"><section class="panel progress-panel">' +
-    title('Session progress', 'chart') +
+    title('Sets I’m tracking', 'chart') +
     '<div class="progress-line"><div><strong id="completed">0</strong><span> / <b id="planned">—</b> sets logged</span></div><span class="percent" id="percent"></span></div><div class="save-note">' +
     icon('shield') +
     'Logs stay on this device</div></section>' +
-    (program?.coachNote
-      ? '<section class="panel coach-panel"><div class="coach-head"><div class="coach-logo"><i class="brandmark"></i></div><div><h2>Coach note</h2><small>TITAN</small></div></div><p>“' +
-        esc(program.coachNote) +
-        '”</p></section>'
-      : '') +
     (program?.warmup
       ? '<section class="panel warm-panel"><div class="panel-row">' +
         title('Warm-up', 'warm') +
@@ -329,33 +342,15 @@ function workoutView() {
         esc(program.warmup.instructions) +
         '</p></section>'
       : '') +
-    (program?.progressionRule
-      ? '<section class="rule-panel">' +
-        title('Progression rule', 'targets') +
-        '<p>' +
-        esc(program.progressionRule) +
-        '</p></section>'
-      : '') +
     '</aside>';
-  const brief =
-    program?.warmup || program?.coachNote
-      ? '<details class="guidance mobile-brief"><summary>' +
-        icon('coach') +
-        'Warm-up &amp; coach note' +
-        icon('down') +
-        '</summary>' +
-        (program.warmup
-          ? '<p><b>Warm-up' +
-            (program.warmup.durationMin != null ? ' · ' + program.warmup.durationMin + ' min' : '') +
-            '</b> ' +
-            esc(program.warmup.instructions) +
-            '</p>'
-          : '') +
-        (program.coachNote ? '<p><b>TITAN</b> ' + esc(program.coachNote) + '</p>' : '') +
-        '</details>'
-      : '';
+  const brief = program?.warmup
+    ? '<details class="guidance mobile-brief"><summary>' + icon('warm') +
+      'Warm-up' + icon('down') + '</summary><p>' +
+      (program.warmup.durationMin != null ? '<b>' + program.warmup.durationMin + ' min</b> · ' : '') +
+      esc(program.warmup.instructions) + '</p></details>'
+    : '';
   const chip = '<div class="progress-chip" aria-live="polite"></div>';
-  return hero + chip + brief + '<div class="workout-layout">' + plan + rail + '</div>';
+  return hero + chip + directive + brief + '<div class="workout-layout">' + plan + rail + '</div>';
 }
 function exerciseCard(ex, i) {
   const log = daySession().lifts.get(ex.key) || { slots: {} },
@@ -380,7 +375,11 @@ function exerciseCard(ex, i) {
     '</span></span><span class="chev">' +
     icon(on ? 'up' : 'down') +
     '</span></button>';
-  if (!on) return '<article class="lift-card">' + header + '</article>';
+  const cue = ex.cues || ex.weightNote || ex.goal ||
+    'Log the weight and reps you complete so I can track this lift.';
+  const directive = coachMessage('TITAN · Lift directive', coachText(cue) +
+    (ex.rir == null ? '' : coachText('Reps in reserve · ' + ex.rir)));
+  if (!on) return '<article class="lift-card">' + header + directive + '</article>';
   const stats = [
     ['Weight', ex.weightLb == null ? 'Open' : ex.weightLb, ex.weightLb == null ? '' : 'lb'],
     ['Sets × reps', (ex.sets ?? '—') + ' × ' + range(ex), ''],
@@ -475,7 +474,7 @@ function exerciseCard(ex, i) {
     : '';
   return (
     '<article class="lift-card open">' +
-    header +
+    header + directive +
     '<div class="lift-body" id="lift-' +
     i +
     '"><div class="lift-details"><div class="prescription">' +
@@ -659,6 +658,11 @@ function historyView() {
   const choices = new Map(history.map((e) => [e.exerciseId, e.exercise || e.exerciseId]));
   if (!choices.has(selectedLift)) selectedLift = history.at(-1)?.exerciseId || '';
   const rows = history.filter((e) => e.exerciseId === selectedLift).toReversed();
+  const latestLoad = rows[0] ? peak(rows[0]) : null;
+  const priorSession = rows.find((row) => row.date < rows[0].date && peak(row) != null);
+  const priorLoad = priorSession ? peak(priorSession) : null;
+  const loadUpdate = latestLoad == null ? '' : 'Last session, your heaviest set was ' + latestLoad + ' lb' +
+    (priorLoad != null && latestLoad > priorLoad ? ', up from ' + priorLoad + ' lb in your previous logged session.' : '.');
   const select =
     '<label class="filter">Exercise<select id="lift-filter">' +
     [...choices]
@@ -675,8 +679,12 @@ function historyView() {
       .join('') +
     '</select></label>';
   return (
-    heading('Lift history', rows.length ? button('export-history', 'Export history', 'share', 'primary') : '',
-      'Look back at what used to feel heavy.') +
+    heading('Lift history', rows.length ? button('export-history', 'Export history', 'share', 'primary') : '') +
+    coachMessage('TITAN · Progress review', coachText(!rows.length
+      ? 'Log your first set, Kaelen, and I’ll start tracking your working weight and volume.'
+      : 'I’m tracking your working weight and estimated volume for ' +
+        choices.get(selectedLift) + ' across ' + rows.length + (rows.length === 1 ? ' session.' : ' sessions.')) +
+      (loadUpdate ? coachText(loadUpdate) : '')) +
     (!rows.length
       ? '<section class="panel empty"><h2>No logged lifts yet</h2><p>Your first logged set will appear here.</p>' +
         button('open-today', 'Open today’s workout', 'today', 'primary') + '</section>'
@@ -828,7 +836,8 @@ function drawCharts() {
 function targetsView() {
   const targets = feed.targets?.targets || [];
   return (
-    heading('Next targets', '', 'One more clean rep is progress.') +
+    heading('Next targets') +
+    coachMessage('TITAN · Progression', coachText('Kaelen, use these targets for your next session. Log what you complete so I can see where to push next.')) +
     (feed.targets?.updated && validDate(feed.targets.updated)
       ? '<p class="muted">Updated ' +
         esc(showDate(feed.targets.updated, { month: 'long', day: 'numeric', year: 'numeric' })) +
@@ -847,9 +856,8 @@ function targetsView() {
           esc(t.targetSets ?? '—') +
           ' × ' +
           esc(t.targetReps ?? '—') +
-          ' reps</strong><p>' +
-          esc(t.rule) +
-          '</p>' +
+          ' reps</strong>' +
+          (t.rule ? coachMessage('TITAN · Next step', coachText(t.rule)) : '') +
           (last
             ? '<small>Last logged · ' +
               esc(shortDate(last.date)) +
